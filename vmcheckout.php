@@ -8,6 +8,8 @@ class VMC {
 	protected static $data;
 	protected static $query;
 	protected static $pattern;
+	protected static $url;
+	protected static $allVMData;
 	protected static $functions = array(
 
 									'claim' => array(
@@ -115,7 +117,12 @@ class VMC {
 
 		if ( self::hasName() ) {
 
-			self::$wf->result( 'demo', $json, 'Going to let you cliam stuff', 'subtitle', 'icon.png', 'yes' );
+			// self::$wf->result( 'demo', $json, 'Going to let you cliam stuff', 'subtitle', 'icon.png', 'yes' );
+
+			self::$query = $query;
+
+			$resutls = self::searchAvailableVMs("http://vm-checkout.threespot.dev/vm.php"); 
+			// "http://apps.threespot.com/vmcheckout/vm.php"
 
 			return self::$wf->toxml();
 
@@ -134,8 +141,55 @@ class VMC {
 	}
 
 	/**
+	* Search VM list against QUERY
+	* 
+	* loop through all the vmData
+	* find a matching VM name
+	* pass it into a workflow result
 	*
+	* @param sting url to fetch vm data from 
+	* @return xml of each match
 	*/
+	protected function searchAvailableVMs( $url ) {
+
+		self::$allVMData = self::fetchAllVMData( $url );
+
+		foreach( self::$allVMData as $index => $vm ) {
+
+			// if ( isset($vm->user) &&  $vm->user === "" && ( preg_match( $this->pattern, $vm->vm, $matches) || self::$query === "")  ) {
+
+			// 	$vm->url = self::$url;
+			// 	$vm->name = $this->getName();
+			// 	self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
+			// }
+
+			self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
+
+		}
+
+		$results = self::$wf->results();
+
+		// if ( count( $results ) == 0 ) {
+		// 	self::$wf->result( 'googlesuggest', self::$query, 'No Suggestions', 'No search suggestions found. Search Google for '.self::$query, 'icon.png' );
+		// }
+
+		return self::$wf->toxml();
+	}
+
+
+	/**
+	* Gets the enitre list of VMS from the server
+	* set the data request url
+	*
+	* @param string url to request data from
+	* @return array of all the VMS
+	*/
+	protected function fetchAllVMData( $url = "http://vm-checkout.threespot.dev/vm.php" ) {
+	 	self::$url = $url;
+		$data = file_get_contents( $url );
+		return json_decode( $data );
+	}
+
 
 	/**
 	*	Returns the username that will be used to claim a VM
@@ -302,21 +356,21 @@ class VMs {
 
 		foreach( self::$vmData as $index=>$vm ) {
 
-			if ( isset($vm->user) &&  $vm->user === "" && ( preg_match( $this->pattern, $vm->vm, $matches) || $this->query === "")  ) {
+			if ( isset($vm->user) &&  $vm->user === "" && ( preg_match( $this->pattern, $vm->vm, $matches) || self::$query === "")  ) {
 
 				$vm->url = $this->url;
 				$vm->name = $this->getName();
-				$this->wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
+				self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
 			}
 		}
 
-		$results = $this->wf->results();
+		$results = self::$wf->results();
 
 		if ( count( $results ) == 0 ) {
-			$this->wf->result( 'googlesuggest', $this->query, 'No Suggestions', 'No search suggestions found. Search Google for '.$this->query, 'icon.png' );
+			self::$wf->result( 'googlesuggest', self::$query, 'No Suggestions', 'No search suggestions found. Search Google for '.self::$query, 'icon.png' );
 		}
 
-		return $this->wf->toxml();
+		return self::$wf->toxml();
 	}
 }
 
