@@ -1,7 +1,7 @@
 <?php 
 
 
-class VMCheckout {
+class VMC {
 
 	private static $name;
 	protected static $wf;
@@ -31,7 +31,43 @@ class VMCheckout {
 			self::$wf = new Workflows();
 		}
 
-	} 
+	}
+
+	/**
+	*	Step 1: Check if checkout name is set
+	*	
+	*	yes - Generate results of available vm functions
+	*	no  - prompt user to set a check name before continuing 
+	*	@param 'string' : checkout name -OR- VMC function name
+	*	@return XML : Alfred results
+	*/
+	public static function vmStepOne( $query ) {
+
+		if ( self::hasName() ) {
+
+			$data = array(
+				"task" => "getFunctions",
+				"query" => $query
+			);
+
+			$results = self::getFunctionResults( json_encode($data) );
+			
+			return $results;
+
+		}
+		else {
+
+			$data = array(
+				"task" => "setName",
+				"query" => $query
+			);
+
+			$results = self::promptForName( json_encode($data) );
+
+			return $results;
+		}
+
+	}
 
 	/**
 	*	Returns the username that will be used to claim a VM
@@ -171,12 +207,7 @@ class VMCheckout {
 
 		self::$data = json_decode( $json );
 
-		$data = array(
-				"task" => "setName",
-				"query" => self::$data->query
-			);
-
-		self::$wf->result( 'demo', json_encode($data), 'Set Name: '.self::$data->query, 'Enter a name to be used to checkout a VM', 'icon.png', 'yes' );
+		self::$wf->result( 'demo', $json, 'Set Name: '.self::$data->query, 'Enter a name to be used to checkout a VM', 'icon.png', 'yes' );
 
 		return self::$wf->toxml();
 	}
@@ -239,14 +270,14 @@ class VMS {
 	}
 }
 
-class VM {
-	function __construct() {
+// class VM {
+// 	function __construct() {
 
-	}
+// 	}
 
-	public static function claim() {
+// 	public static function claim() {
 
-	}
-}
+// 	}
+// }
 
 ?>
