@@ -72,7 +72,11 @@ class VMC {
 	/**
 	*	Step 2: Determine the action based on Step1's result query
 	*
-	*
+	*	@param 'string' : JSON data {task, query}
+	*	@param 'string' : script task this is being fired from
+	*	@return 'string' : notification message
+	*	-OR-
+	*	@return 'string' : VMC task name
 	*/
 	public static function vmStepTwo( $json, $task ) {
 
