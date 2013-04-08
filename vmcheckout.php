@@ -156,6 +156,8 @@ class VMC {
 
 		foreach( self::$allVMData as $index => $vm ) {
 
+
+			####### STOPED HERE ########
 			// if ( isset($vm->user) &&  $vm->user === "" && ( preg_match( $this->pattern, $vm->vm, $matches) || self::$query === "")  ) {
 
 			// 	$vm->url = self::$url;
@@ -163,7 +165,8 @@ class VMC {
 			// 	self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
 			// }
 
-			self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
+			// for testing : 
+			// self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
 
 		}
 
