@@ -11,24 +11,23 @@ class VMC {
 	protected static $url;
 	protected static $allVMData;
 	protected static $functions = array(
-
-									'claim' => array(
-										"task" => "claim",
-										"subtitle" => "Claim a Virtual Machine"
-									),
-									'vacate' => array(
-										"task" => "vacate",
-										"subtitle" => "Vacate a Virtual Machine"
-									),
-									'resetName' => array(
-										"task" => "resetName",
-										"subtitle" => "Reset Your Checkout Name"
-									),
-									'clearvm' => array(
-										"task" => "clear",
-										"subtitle" => "Clear Your VM Checkout Name"
-									)
-								);
+		'claim' => array(
+			"task" => "claim",
+			"subtitle" => "Claim a Virtual Machine"
+		),
+		'vacate' => array(
+			"task" => "vacate",
+			"subtitle" => "Vacate a Virtual Machine"
+		),
+		'resetName' => array(
+			"task" => "resetName",
+			"subtitle" => "Reset Your Checkout Name"
+		),
+		'clearvm' => array(
+			"task" => "clear",
+			"subtitle" => "Clear Your VM Checkout Name"
+		)
+	);
 
 	function __construct( ) {
 
@@ -41,12 +40,12 @@ class VMC {
 	}
 
 	/**
-	*	'vm' Step 1: Check if checkout name is set
-	*	
-	*	yes - Generate results of available vm functions
-	*	no  - prompt user to set a check name before continuing 
-	*	@param 'string' : checkout name -OR- VMC function name
-	*	@return XML : Alfred results
+	* 'vm' Step 1: Check if checkout name is set
+	* 
+	* yes - Generate results of available vm functions
+	* no  - prompt user to set a check name before continuing 
+	* @param 'string' : checkout name -OR- VMC function name
+	* @return XML : Alfred results
 	*/
 	public static function vmStepOne( $query ) {
 
@@ -76,13 +75,13 @@ class VMC {
 	}
 
 	/**
-	*	'vm' Step 2: Determine the action based on Step1's result query
+	* 'vm' Step 2: Determine the action based on Step1's result query
 	*
-	*	@param 'string' : JSON data {task, query}
-	*	@param 'string' : script task this is being fired from
-	*	@return 'string' : notification message
-	*	-OR-
-	*	@return 'string' : VMC task name
+	* @param 'string' : JSON data {task, query}
+	* @param 'string' : script task this is being fired from
+	* @return 'string' : notification message
+	* -OR-
+	* @return 'string' : VMC task name
 	*/
 	public static function stepTwo( $json, $output = true ) {
 
@@ -108,10 +107,10 @@ class VMC {
 	}
 
 	/**
-	*	'claim' Step 1: Determine if a NAME has been set
+	* 'claim' Step 1: Determine if a NAME has been set
 	*
-	*	yes - Generate results for claiming a VM
-	*	no  - prompt user to set a check name before continuing  
+	* yes - Generate results for claiming a VM
+	* no  - prompt user to set a check name before continuing  
 	*/
 	public static function claimStepOne( $query ) {
 
@@ -195,10 +194,10 @@ class VMC {
 
 
 	/**
-	*	Returns the username that will be used to claim a VM
+	* Returns the username that will be used to claim a VM
 	*
-	*	@param none
-	*	@return 'string' username
+	* @param none
+	* @return 'string' username
 	*/
 	public static function getName() {
 		return self::$data->query;
@@ -209,20 +208,20 @@ class VMC {
 	}
 
 	/**
-	*	Returns the user input for the alfred command box
+	* Returns the user input for the alfred command box
 	*
-	*	@param none
-	*	@return 'string' user input
+	* @param none
+	* @return 'string' user input
 	*/
 	public static function getQuery() {
 		return self::$data->query;
 	}
 
 	/**
-	*	Sets the username that will be used to claim a VM
+	* Sets the username that will be used to claim a VM
 	*
-	*	@param 'string' username
-	*	@return none
+	* @param 'string' username
+	* @return none
 	*/
 	protected static function setName( ) {
 
@@ -231,10 +230,10 @@ class VMC {
 	}
 
 	/**
-	*	Checks if a name is alrady set for claiming VMs
+	* Checks if a name is alrady set for claiming VMs
 	*
-	*	@param none
-	*	@return boolean username is set
+	* @param none
+	* @return boolean username is set
 	*/
 	protected static function hasName() {
 
@@ -260,9 +259,9 @@ class VMC {
 
 
 	/**
-	*	Sets the VM Class data to be used to determine the tasks and query info
+	* Sets the VM Class data to be used to determine the tasks and query info
 	*
-	*	@param string json data
+	* @param string json data
 	*/
 	protected static function setData( $dataString ) {
 
@@ -274,10 +273,10 @@ class VMC {
 
 
 	/**
-	*	Search Available VM Checkout Workflow Tasks
+	* Search Available VM Checkout Workflow Tasks
 	*
-	*	@param string json data
-	*	@return xml Alfred results of functions
+	* @param string json data
+	* @return xml Alfred results of functions
 	*/
 	public static function getFunctionResults( $json ) {
 
@@ -303,10 +302,10 @@ class VMC {
 	}
 
 	/**
-	*	Creates a Alfred prompt to set a username for checking out VMs
+	* Creates a Alfred prompt to set a username for checking out VMs
 	*
-	*	@param none
-	*	@return xml Alfred result for inputing a name
+	* @param none
+	* @return xml Alfred result for inputing a name
 	*/
 	protected static function promptForName( $json ) {
 
