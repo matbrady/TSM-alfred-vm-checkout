@@ -19,6 +19,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>846C5955-D0FF-45EB-B0CF-58F5389F96C6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
 		<array>
 			<dict>
@@ -60,6 +71,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>E97A8F20-C006-4FA4-97EE-E2C00FA3FC7A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>846C5955-D0FF-45EB-B0CF-58F5389F96C6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</key>
 		<array>
 			<dict>
@@ -85,62 +107,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>38</integer>
-				<key>keyword</key>
-				<string>claim</string>
-				<key>runningsubtext</key>
-				<string>Retrieving available vms ...</string>
-				<key>script</key>
-				<string>require_once('vms.php');
-
-$vms = new VMS( "{query}" );
-
-echo $vms-&gt;searchVmData("http://vm-checkout.threespot.dev/vm.php"); // "http://apps.threespot.com/vmcheckout/vm.php"</string>
-				<key>subtext</key>
-				<string>Search and Checkout Available Threespot VMs</string>
-				<key>title</key>
-				<string>Virtual Machine</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>resetname</string>
-				<key>script</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Reset Your Virtual Machine Checkout Name</string>
-				<key>title</key>
-				<string>Reset Name</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>BC942E95-5DAD-41EC-B75E-0C4E7842DEE3</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -160,82 +126,6 @@ echo $vms-&gt;searchVmData("http://vm-checkout.threespot.dev/vm.php"); // "http:
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>vacate</string>
-				<key>script</key>
-				<string>include('vacate.php');
-
-Wrapper( {query} ); </string>
-				<key>subtext</key>
-				<string>Sub Text</string>
-				<key>title</key>
-				<string>Vacate Threespot Virtual Machine</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>1889701D-1EA3-4290-8B14-A310F3561286</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>38</integer>
-				<key>keyword</key>
-				<string>vm</string>
-				<key>runningsubtext</key>
-				<string>Trying to figure out what you want to do. . .</string>
-				<key>script</key>
-				<string>require_once('vmcheckout.php');
-$VMC = new VMC();
-
-echo $VMC::vmStepOne( "{query}" );</string>
-				<key>subtext</key>
-				<string>Claim and Vacate Threespot Virtual Machines</string>
-				<key>title</key>
-				<string>Threespot Virtual Machine Checkout</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>38</integer>
-				<key>script</key>
-				<string>require_once('vmcheckout.php');
-$VMC = new VMC();
-
-echo $VMC::vmStepTwo( "{query}", "setName" );
-</string>
-				<key>type</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A9ADDD8F-781D-4F6D-900E-B245E2852A22</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -291,6 +181,54 @@ else {
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
+				<integer>54</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+$VMC = new VMC();
+
+echo $VMC::stepTwo( "{query}" );</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>keyword</key>
+				<string>vm</string>
+				<key>runningsubtext</key>
+				<string>Trying to figure out what you want to do. . .</string>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+$VMC = new VMC();
+
+echo $VMC::vmStepOne( "{query}" );</string>
+				<key>subtext</key>
+				<string>Claim and Vacate Threespot Virtual Machines</string>
+				<key>title</key>
+				<string>Threespot Virtual Machine Checkout</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
 				<integer>63</integer>
 				<key>script</key>
 				<string>set temp to "{query}"
@@ -312,20 +250,156 @@ end if</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
 				<key>escaping</key>
-				<integer>54</integer>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>vacate</string>
+				<key>script</key>
+				<string>include('vacate.php');
+
+Wrapper( {query} ); </string>
+				<key>subtext</key>
+				<string>Sub Text</string>
+				<key>title</key>
+				<string>Vacate Threespot Virtual Machine</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>1889701D-1EA3-4290-8B14-A310F3561286</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>keyword</key>
+				<string>claim</string>
+				<key>runningsubtext</key>
+				<string>Retrieving available vms ...</string>
+				<key>script</key>
+				<string>require_once('vms.php');
+$vms = new VMS( "{query}" );
+
+echo $vms-&gt;searchVmData("http://vm-checkout.threespot.dev/vm.php"); // "http://apps.threespot.com/vmcheckout/vm.php"</string>
+				<key>subtext</key>
+				<string>Search and Checkout Available Threespot VMs</string>
+				<key>title</key>
+				<string>Virtual Machine</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>38</integer>
 				<key>script</key>
 				<string>require_once('vmcheckout.php');
 $VMC = new VMC();
 
-echo $VMC::vmStepTwo( "{query}", "getFunctions" );</string>
+echo $VMC::stepTwo( "{query}" );
+</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</string>
+			<string>A9ADDD8F-781D-4F6D-900E-B245E2852A22</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>resetname</string>
+				<key>script</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Reset Your Virtual Machine Checkout Name</string>
+				<key>title</key>
+				<string>Reset Name</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>BC942E95-5DAD-41EC-B75E-0C4E7842DEE3</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>script</key>
+				<string>if ( file_exists( 'name.txt' ) ) {
+	unlink( 'name.txt' );
+	echo 'Name has been deleted';
+}
+else {
+	echo 'no name has been set yet';
+}</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>846C5955-D0FF-45EB-B0CF-58F5389F96C6</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2507B0AF-30C2-43D8-9DEC-7D04181E1C69</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>clear</string>
+				<key>subtext</key>
+				<string>Do it Now!!!</string>
+				<key>text</key>
+				<string>Clear VM Checkout Name</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E97A8F20-C006-4FA4-97EE-E2C00FA3FC7A</string>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -342,10 +416,20 @@ echo $VMC::vmStepTwo( "{query}", "getFunctions" );</string>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>2507B0AF-30C2-43D8-9DEC-7D04181E1C69</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
 		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
 		<dict>
 			<key>ypos</key>
 			<real>250</real>
+		</dict>
+		<key>846C5955-D0FF-45EB-B0CF-58F5389F96C6</key>
+		<dict>
+			<key>ypos</key>
+			<real>610</real>
 		</dict>
 		<key>8990735D-08D8-4160-8A0F-0E26EFA886B6</key>
 		<dict>
@@ -355,7 +439,7 @@ echo $VMC::vmStepTwo( "{query}", "getFunctions" );</string>
 		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>70</real>
 		</dict>
 		<key>946AF645-25F4-49DC-B650-F52E9F1AFADA</key>
 		<dict>
@@ -371,6 +455,11 @@ echo $VMC::vmStepTwo( "{query}", "getFunctions" );</string>
 		<dict>
 			<key>ypos</key>
 			<real>490</real>
+		</dict>
+		<key>E97A8F20-C006-4FA4-97EE-E2C00FA3FC7A</key>
+		<dict>
+			<key>ypos</key>
+			<real>610</real>
 		</dict>
 		<key>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</key>
 		<dict>

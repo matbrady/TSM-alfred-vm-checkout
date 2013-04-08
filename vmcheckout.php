@@ -20,7 +20,11 @@ class VMC {
 									'resetName' => array(
 										"task" => "resetName",
 										"subtitle" => "Reset Your Checkout Name"
-									)
+									)/*,
+									'clear' => array(
+										"task" => "clear",
+										"subtitle" => "Clear Your VM Checkout Name"
+									)*/
 								);
 	protected static $pattern;
 
@@ -35,7 +39,7 @@ class VMC {
 	}
 
 	/**
-	*	Step 1: Check if checkout name is set
+	*	'vm' Step 1: Check if checkout name is set
 	*	
 	*	yes - Generate results of available vm functions
 	*	no  - prompt user to set a check name before continuing 
@@ -70,7 +74,7 @@ class VMC {
 	}
 
 	/**
-	*	Step 2: Determine the action based on Step1's result query
+	*	'vm' Step 2: Determine the action based on Step1's result query
 	*
 	*	@param 'string' : JSON data {task, query}
 	*	@param 'string' : script task this is being fired from
@@ -78,7 +82,7 @@ class VMC {
 	*	-OR-
 	*	@return 'string' : VMC task name
 	*/
-	public static function vmStepTwo( $json, $task ) {
+	public static function stepTwo( $json ) {
 
 		self::$data = json_decode( $json );
 
@@ -99,6 +103,38 @@ class VMC {
 			break;
 		}
 	}
+
+	/**
+	*	'claim' Step 1: Determine if a NAME has been set
+	*
+	*	yes - Generate results for claiming a VM
+	*	no  - prompt user to set a check name before continuing  
+	*/
+	public static function claimStepOne( $query ) {
+
+		if ( self::hasName() ) {
+
+			self::$wf->result( 'demo', $json, 'Going to let you cliam stuff', 'subtitle', 'icon.png', 'yes' );
+
+			return self::$wf->toxml();
+
+		}
+		else {
+
+			$data = array(
+				"task" => "setName",
+				"query" => $query
+			);
+
+			$results = self::promptForName( json_encode($data) );
+
+			return $results;
+		}
+	}
+
+	/**
+	*
+	*/
 
 	/**
 	*	Returns the username that will be used to claim a VM
@@ -195,12 +231,9 @@ class VMC {
 
 			if ( preg_match( self::$pattern, $val[0], $matches) || self::$query === "" ) {
 
-				$data = array(
-						"task" => "getFunctions",
-						"query" => $val[0]
-					);
+				self::$data->task2 = "getFunctions";
 
-				self::$wf->result( 'demo', json_encode($data), 'Task: '.$val[0] , $val[1], 'icon.png', 'yes' );
+				self::$wf->result( 'demo', json_encode( self::$data ), 'Task: '.$val[0] , $val[1], 'icon.png', 'yes' );
 
 			}
 
@@ -219,13 +252,15 @@ class VMC {
 
 		self::$data = json_decode( $json );
 
-		self::$wf->result( 'demo', $json, 'Set Name: '.self::$data->query, 'Enter a name to be used to checkout a VM', 'icon.png', 'yes' );
+		self::$data->task2 = "setName";
+
+		self::$wf->result( 'demo', json_encode( self::$data ), 'Set Name: '.self::$data->query, 'Enter a name to be used to checkout a VM', 'icon.png', 'yes' );
 
 		return self::$wf->toxml();
 	}
 }
 
-class VMS {
+class VMs {
 
 	protected static $vmData;
 	protected static $url;
