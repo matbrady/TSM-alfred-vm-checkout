@@ -8,7 +8,7 @@ class VMC {
 	protected static $data;
 	protected static $query;
 	protected static $functions = array(
-		
+
 									'claim' => array(
 										"task" => "claim",
 										"subtitle" => "Claim a Virtual Machine"
@@ -71,6 +71,8 @@ class VMC {
 
 	/**
 	*	Step 2: Determine the action based on Step1's result query
+	*
+	*
 	*/
 	public static function vmStepTwo( $json, $task ) {
 
@@ -171,24 +173,6 @@ class VMC {
 		self::$pattern = "/".self::$data->query."/i";
 	}
 
-
-
-	public static function determineTask( $task ) {
-		switch ( $task ) {
-			case 'setName':
-				if ( $task === self::$task ) {
-					self::promptForName();
-				}
-				else {
-					return "";
-				}
-				self::setName();
-			break;
-			case 'getFunctions':
-				self::getFunctions();
-			break;
-		}
-	}
 
 
 	/**
