@@ -238,6 +238,8 @@ else if temp is "vacate" then
 	tell application "Alfred 2" to search "vacate "
 else if temp is "resetName" then
 	tell application "Alfred 2" to search "reset "
+else if temp is "clear" then
+	tell application "Alfred 2" to search "clearvm"
 end if</string>
 				<key>type</key>
 				<integer>6</integer>
@@ -388,7 +390,7 @@ else {
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>clear</string>
+				<string>clearvm</string>
 				<key>subtext</key>
 				<string>Do it Now!!!</string>
 				<key>text</key>

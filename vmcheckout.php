@@ -20,11 +20,11 @@ class VMC {
 									'resetName' => array(
 										"task" => "resetName",
 										"subtitle" => "Reset Your Checkout Name"
-									)/*,
-									'clear' => array(
+									),
+									'clearvm' => array(
 										"task" => "clear",
 										"subtitle" => "Clear Your VM Checkout Name"
-									)*/
+									)
 								);
 	protected static $pattern;
 
@@ -92,13 +92,14 @@ class VMC {
 
 				self::setName();
 
-				return self::$data->task === $task ? "Checkout name is now '".self::$data->query."'" : '';
+				return self::$data->task === self::$data->task2 ? "Checkout name is now '".self::$data->query."'" : '';
 
 			break;
 
 			case "getFunctions":
 
-				return self::$data->task === $task ? self::$data->query : '';
+				return self::$data->task === self::$data->task2 ? self::$data->query : '';
+				// return self::$data->task. " " .self::$data->task2. " " . self::$data->query;
 
 			break;
 		}
@@ -232,6 +233,8 @@ class VMC {
 			if ( preg_match( self::$pattern, $val[0], $matches) || self::$query === "" ) {
 
 				self::$data->task2 = "getFunctions";
+
+				self::$data->query = $val[0];
 
 				self::$wf->result( 'demo', json_encode( self::$data ), 'Task: '.$val[0] , $val[1], 'icon.png', 'yes' );
 
