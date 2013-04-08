@@ -103,6 +103,14 @@ class VMC {
 				// return self::$data->task. " " .self::$data->task2. " " . self::$data->query;
 
 			break;
+
+			case "claim":
+
+				// print_r( self::$data );
+
+				return self::claimVM();
+
+			break;
 		}
 	}
 
@@ -119,11 +127,12 @@ class VMC {
 			// self::$wf->result( 'demo', $json, 'Going to let you cliam stuff', 'subtitle', 'icon.png', 'yes' );
 
 			self::$query = $query;
+			self::$pattern = "/".$query."/i";
 
 			$resutls = self::searchAvailableVMs("http://vm-checkout.threespot.dev/vm.php"); 
 			// "http://apps.threespot.com/vmcheckout/vm.php"
 
-			return self::$wf->toxml();
+			return $resutls;
 
 		}
 		else {
@@ -155,14 +164,14 @@ class VMC {
 
 		foreach( self::$allVMData as $index => $vm ) {
 
+			if ( isset($vm->user) &&  $vm->user === "" && ( preg_match( self::$pattern, $vm->vm, $matches) || self::$data->query === "")  ) {
 
-			####### STOPED HERE ########
-			// if ( isset($vm->user) &&  $vm->user === "" && ( preg_match( $this->pattern, $vm->vm, $matches) || self::$query === "")  ) {
+				$vm->task = "claim";
+				$vm->url = self::$url;
+				$vm->name = self::getName();
 
-			// 	$vm->url = self::$url;
-			// 	$vm->name = $this->getName();
-			// 	self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
-			// }
+				self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
+			}
 
 			// for testing : 
 			// self::$wf->result( $index , json_encode($vm) , $vm->vm, "Checkout Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
@@ -193,13 +202,54 @@ class VMC {
 	}
 
 
+	protected static function claimVM() {
+
+		date_default_timezone_set('America/New_York');
+		$date = date("Y-m-d H:i:s");
+
+		// print_r(self::$data );
+
+		$update_json = '{"id":"'.self::$data->id.'","user":"'.self::$query.'","checkout":"'.$date.'"}';
+
+		$chlead = curl_init();
+
+		// set URL and other appropriate options
+		$options = array(
+			CURLOPT_URL => self::$data->url,
+		  	CURLOPT_HTTPHEADER => array('Content-Type: application/json','Content-Length: ' . strlen($update_json) ),
+		  	CURLOPT_VERBOSE => 1,
+		  	CURLOPT_RETURNTRANSFER => true,
+		  	CURLOPT_CUSTOMREQUEST => "PUT",
+		  	CURLOPT_POSTFIELDS => $update_json,
+		  	CURLOPT_SSL_VERIFYPEER => 0,
+		);
+
+		curl_setopt_array($chlead, $options);
+
+		$chleadresult = curl_exec($chlead);
+		$chleadapierr = curl_errno($chlead);
+		$chleaderrmsg = curl_error($chlead);
+		curl_close($chlead);
+
+		if ( $chleadapierr === 1 ) {
+		  	return $chleadapierr;
+		}
+		else if ( $chleaderrmsg === 1 ) {
+			return $chleaderrmsg;
+		}
+		else {
+		  return 'You now own '.self::$data->vm;
+		}
+	}
+
+
 	/**
 	* Returns the username that will be used to claim a VM
 	*
 	* @param none
 	* @return 'string' username
 	*/
-	public static function getName() {
+	protected static function getName() {
 		return self::$data->query;
 	}
 
