@@ -186,7 +186,7 @@ else {
 				<string>require_once('vmcheckout.php');
 $VMC = new VMC();
 
-echo $VMC::stepTwo( "{query}" );</string>
+echo $VMC::stepTwo( "{query}", false );</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
@@ -315,7 +315,7 @@ echo $vms-&gt;searchVmData("http://vm-checkout.threespot.dev/vm.php"); // "http:
 				<string>require_once('vmcheckout.php');
 $VMC = new VMC();
 
-echo $VMC::stepTwo( "{query}" );
+echo $VMC::stepTwo( "{query}", true );
 </string>
 				<key>type</key>
 				<integer>1</integer>

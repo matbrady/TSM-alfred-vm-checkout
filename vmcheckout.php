@@ -82,7 +82,7 @@ class VMC {
 	*	-OR-
 	*	@return 'string' : VMC task name
 	*/
-	public static function stepTwo( $json ) {
+	public static function stepTwo( $json, $output = true ) {
 
 		self::$data = json_decode( $json );
 
@@ -92,13 +92,13 @@ class VMC {
 
 				self::setName();
 
-				return self::$data->task === self::$data->task2 ? "Checkout name is now '".self::$data->query."'" : '';
+				return self::$data->output === $output ? "Checkout name is now '".self::$data->query."'" : '';
 
 			break;
 
 			case "getFunctions":
 
-				return self::$data->task === self::$data->task2 ? self::$data->query : '';
+				return self::$data->output === $output ?  self::$data->query : '';
 				// return self::$data->task. " " .self::$data->task2. " " . self::$data->query;
 
 			break;
@@ -232,7 +232,7 @@ class VMC {
 
 			if ( preg_match( self::$pattern, $val[0], $matches) || self::$query === "" ) {
 
-				self::$data->task2 = "getFunctions";
+				self::$data->output = false;
 
 				self::$data->query = $val[0];
 
@@ -255,7 +255,7 @@ class VMC {
 
 		self::$data = json_decode( $json );
 
-		self::$data->task2 = "setName";
+		self::$data->output = true;
 
 		self::$wf->result( 'demo', json_encode( self::$data ), 'Set Name: '.self::$data->query, 'Enter a name to be used to checkout a VM', 'icon.png', 'yes' );
 
