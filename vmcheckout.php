@@ -7,6 +7,7 @@ class VMC {
 	protected static $wf;
 	protected static $data;
 	protected static $query;
+	protected static $pattern;
 	protected static $functions = array(
 
 									'claim' => array(
@@ -26,7 +27,6 @@ class VMC {
 										"subtitle" => "Clear Your VM Checkout Name"
 									)
 								);
-	protected static $pattern;
 
 	function __construct( ) {
 
@@ -167,7 +167,7 @@ class VMC {
 	*	@param 'string' username
 	*	@return none
 	*/
-	public static function setName( ) {
+	protected static function setName( ) {
 
 		file_put_contents( 'name.txt', self::$data->query );
 
@@ -179,7 +179,7 @@ class VMC {
 	*	@param none
 	*	@return boolean username is set
 	*/
-	public static function hasName() {
+	protected static function hasName() {
 
 
 		if ( file_exists( 'name.txt' ) ) {
@@ -207,7 +207,7 @@ class VMC {
 	*
 	*	@param string json data
 	*/
-	public static function setData( $dataString ) {
+	protected static function setData( $dataString ) {
 
 		self::$data = json_decode( $dataString );
 
@@ -251,7 +251,7 @@ class VMC {
 	*	@param none
 	*	@return xml Alfred result for inputing a name
 	*/
-	public static function promptForName( $json ) {
+	protected static function promptForName( $json ) {
 
 		self::$data = json_decode( $json );
 
