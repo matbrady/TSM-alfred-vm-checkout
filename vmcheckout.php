@@ -8,6 +8,7 @@ class VMC {
 	protected static $data;
 	protected static $query;
 	protected static $functions = array(
+		
 									'claim' => array(
 										"task" => "claim",
 										"subtitle" => "Claim a Virtual Machine"
@@ -51,7 +52,7 @@ class VMC {
 			);
 
 			$results = self::getFunctionResults( json_encode($data) );
-			
+
 			return $results;
 
 		}
@@ -66,7 +67,31 @@ class VMC {
 
 			return $results;
 		}
+	}
 
+	/**
+	*	Step 2: Determine the action based on Step1's result query
+	*/
+	public static function vmStepTwo( $json, $task ) {
+
+		self::$data = json_decode( $json );
+
+		switch ( self::$data->task ) {
+
+			case "setName":
+
+				self::setName();
+
+				return self::$data->task === $task ? "Checkout name is now '".self::$data->query."'" : '';
+
+			break;
+
+			case "getFunctions":
+
+				return self::$data->task === $task ? self::$data->query : '';
+
+			break;
+		}
 	}
 
 	/**
@@ -103,7 +128,6 @@ class VMC {
 
 		file_put_contents( 'name.txt', self::$data->query );
 
-		return "Checkout name is now '".self::$data->query."'";
 	}
 
 	/**

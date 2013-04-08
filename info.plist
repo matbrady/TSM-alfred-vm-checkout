@@ -29,6 +29,14 @@
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
 		</array>
 		<key>946AF645-25F4-49DC-B650-F52E9F1AFADA</key>
 		<array>
@@ -219,19 +227,8 @@ echo $VMC::vmStepOne( "{query}" );</string>
 				<string>require_once('vmcheckout.php');
 $VMC = new VMC();
 
-echo $VMC::vmStepTwo();
-
-/*
-if ( $vmCheckout::getTask() === "setName" ) {
-
-	echo $vmCheckout::setName();
-
-}
-else {
-	return;
-}
-
-*/</string>
+echo $VMC::vmStepTwo( "{query}", "setName" );
+</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
@@ -319,18 +316,9 @@ end if</string>
 				<integer>54</integer>
 				<key>script</key>
 				<string>require_once('vmcheckout.php');
-$vmCheckout = new VMCheckout();
+$VMC = new VMC();
 
-$vmCheckout::setData( "{query}" );
-
-if ( $vmCheckout::getTask() === "getFunctions" ) {
-	print_r( $vmCheckout::getName() ) ;
-#	echo $vmCheckout::getTask();
-
-}
-else {
-	echo 'null';
-}</string>
+echo $VMC::vmStepTwo( "{query}", "getFunctions" );</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
