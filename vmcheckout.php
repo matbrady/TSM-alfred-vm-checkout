@@ -209,7 +209,7 @@ class VMC {
 
 		// print_r(self::$data );
 
-		$update_json = '{"id":"'.self::$data->id.'","user":"'.self::$query.'","checkout":"'.$date.'"}';
+		$update_json = '{"id":"'.self::$data->id.'","user":"'.self::$data->name.'","checkout":"'.$date.'"}';
 
 		$chlead = curl_init();
 
@@ -250,7 +250,7 @@ class VMC {
 	* @return 'string' username
 	*/
 	protected static function getName() {
-		return self::$data->query;
+		return file_get_contents( 'name.txt' );
 	}
 
 	public static function getTask() {
