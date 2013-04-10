@@ -7,24 +7,7 @@
 	<key>connections</key>
 	<dict>
 		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>A9ADDD8F-781D-4F6D-900E-B245E2852A22</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
+		<array/>
 		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
 		<array>
 			<dict>
@@ -115,7 +98,7 @@ echo $VMC::stepTwo( "{query}", false );</string>
 
 $VMC = new VMC();
 
-echo $VMC-&gt;tasks( "{query}" ) ;</string>
+echo $VMC-&gt;display_tasks( "{query}" ) ;</string>
 				<key>subtext</key>
 				<string>Claim and Vacate Threespot Virtual Machines</string>
 				<key>title</key>
@@ -123,7 +106,7 @@ echo $VMC-&gt;tasks( "{query}" ) ;</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>

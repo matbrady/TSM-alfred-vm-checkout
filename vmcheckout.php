@@ -15,51 +15,72 @@ require_once('workflows.php');
 */ 
 class VMC extends Workflows { 
 
-	// public $results;
 	protected $pattern;
-	protected $tasks = array(
+	protected $tasks = array(  // comma placement is for easier commenting of code during development
 		'claim' => array(
-			"task" => "claim",
+			"task" => "Claim",
 			"subtitle" => "Claim a Virtual Machine"
-		),
-		'vacate' => array(
-			"task" => "vacate",
-			"subtitle" => "Vacate a Virtual Machine"
-		),
-		'resetName' => array(
-			"task" => "resetName",
+		)
+		,'vacate' => array(
+			"task" => "Vacate",
+			"subtitle" => "Vacate a Claimed Virtual Machine"
+		)
+		,'reset_name' => array(
+			"task" => "Reset Name",
 			"subtitle" => "Reset Your Checkout Name"
-		),
-		'clearvm' => array(
-			"task" => "clear",
+		)
+		,'set_name' => array(
+			"task" => "Set Name",
+			"subtitle" => "Set Your Checkout Name"
+		)
+		,'clearvm' => array(
+			"task" => "Clear",
 			"subtitle" => "Clear Your VM Checkout Name"
 		)
 	);
 
 	public function __construct() {
-		// print_r( $this->request('http://vm-checkout.threespot.dev/vm.php') );
 		parent::__construct();  
 	}
 
+	/**
+	* Sets the Pattern for Searching
+	*
+	* Description: Accepts a string it concatinates a regular
+	* expression pattern to be used for searching
+	* @param 'string' : user input or query
+	* @return NONE
+	*/
 	protected function set_match_pattern( $query ) {
 
 		$this->pattern = "/".$query."/i";
 
 	}
 
-	public function tasks( $query ) {
+	/**
+	* Search VMC Workflow Tasks
+	*
+	* Description: Accepts the user input string and checks
+	* it against the tasks ($task) which can be invoked
+	* @param 'string' : user input or query
+	* @return XML : result data to be display in Alfred prompt
+	*/
+	public function display_tasks( $query ) {
 
 		$this->set_match_pattern( $query );
 
 		foreach( $this->tasks as $index => $func ) {
 
+			// IF user matches a VM task name OR is an empty string
 			if ( preg_match( $this->pattern, $func['task'], $matches) || $query === "" ) {
 
-				$this->result( 'demo', $query, 'Task: '.$func['task'] , $func['subtitle'], 'icon.png', 'yes' );
+				// Create a result with the Task name and subtitle
+				$this->result( 'demo', $query, 'task: '.$func['task'] , $func['subtitle'], 'icon.png', 'yes' );
 
 			}
 
 		}
+
 		return $this->toxml();
 
 	}
