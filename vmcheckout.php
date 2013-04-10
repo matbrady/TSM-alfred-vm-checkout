@@ -176,9 +176,12 @@ class VMC extends Workflows {
 	}
 
 	/**
-	* Prompt User for Checkout Name
+	* Prompt User for Information
 	*
-	* Description: Generate 
+	* Description: Generate a Result Prompt from passed data to request
+	* from the user. This will be used to set information with the Workflow
+	* @param ARRAY : [data, title, subtitle, image] info used to create Workflow Result
+	* @return XML : prompt result
 	*/
 	protected function prompt_user( $prompt ) {
 
