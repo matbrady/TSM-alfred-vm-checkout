@@ -111,13 +111,12 @@ class VMC extends Workflows {
 		foreach( $this->tasks as $index => $func ) {
 
 			/**
-			* Check for: 
-			*  IF checkout name IS set and the Task name is "Set Name"
-			*  dont create a result
-			*  IF checkout name IS NOT set and the Task name is "Reset Name"
-			*  dont create a result
-			* In other words: This displays better result language based on
-			* current VMC Workflow application state
+			* IF checkout name IS set and the Task name is "Set Name"
+			*   dont create a result.
+			* IF checkout name IS NOT set and the Task name is "Reset Name"
+			*   dont create a result.
+			* In other words: Only display "Set Name" if no name is set. Only
+			* display "Reset Name" if a name is already set 
 			*/
 			if ( $this->is_name_set() !== false && $func['task'] === "Set Name"  ||
 				 $this->is_name_set() === false && $func['task'] === "Reset Name" ) 
@@ -131,7 +130,7 @@ class VMC extends Workflows {
 				if ( preg_match( $this->pattern, $func['task'], $matches) || $query === "" ) {
 
 					// Create a result with the Task name and subtitle
-					$this->result( 'demo', $query, $func['task'] , $func['subtitle'], 'icon.png', 'yes' );
+					$this->result( 'demo', $func['task'], $func['task'], $func['subtitle'], 'icon.png', 'yes' );
 
 				}
 
@@ -142,6 +141,10 @@ class VMC extends Workflows {
 		return $this->toxml();
 
 	}
+
+	/**
+	*/
+	public function run_task() {}
 
 	/**
 	* Set the Name used to Claim and Vacate a VM listing

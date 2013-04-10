@@ -7,23 +7,21 @@
 	<key>connections</key>
 	<dict>
 		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
-		<array/>
-		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
+				<string>2352FA69-2FE0-4804-A0F1-D5AB869030DC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
 		</array>
-		<key>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</key>
+		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>2352FA69-2FE0-4804-A0F1-D5AB869030DC</string>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -67,20 +65,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
 				<key>escaping</key>
-				<integer>54</integer>
+				<integer>38</integer>
+				<key>keyword</key>
+				<string>claim</string>
+				<key>runningsubtext</key>
+				<string>please wait text</string>
 				<key>script</key>
-				<string>require_once('vmcheckout.php');
-$VMC = new VMC();
-
-echo $VMC::stepTwo( "{query}", false );</string>
+				<string></string>
+				<key>subtext</key>
+				<string>subtext</string>
+				<key>title</key>
+				<string>placeholder</string>
 				<key>type</key>
 				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</string>
+			<string>D828191E-DFA7-4172-8AFC-F027A725DFC8</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -120,11 +127,13 @@ echo $VMC-&gt;display_tasks( "{query}" ) ;</string>
 				<integer>63</integer>
 				<key>script</key>
 				<string>set temp to "{query}"
-if temp is "claim" then
+if temp is "Claim" then
 	tell application "Alfred 2" to search "claim "
-else if temp is "vacate" then 
+else if temp is "Vacate" then 
 	tell application "Alfred 2" to search "vacate "
-else if temp is "resetName" then
+else if temp is "Set Name" then
+	tell application "Alfred 2" to search "set "
+else if temp is "Reset Name" then
 	tell application "Alfred 2" to search "reset "
 else if temp is "clear" then
 	tell application "Alfred 2" to search "clearvm"
@@ -181,10 +190,10 @@ echo $VMC::stepTwo( "{query}", true );
 			<key>ypos</key>
 			<real>140</real>
 		</dict>
-		<key>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</key>
+		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>200</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
