@@ -225,8 +225,6 @@ class VMC extends Workflows {
 
 }
 
-// $VMC = new VMC();
-
-// echo $VMC->request_vm_search( "{query}" ) ;
+// $VMC = new VMC(); echo $VMC->request_vm_search( "{query}" ) ;
 
 ?>
