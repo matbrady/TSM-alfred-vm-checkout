@@ -16,6 +16,7 @@ require_once('workflows.php');
 class VMC extends Workflows { 
 
 	protected $pattern;
+	protected $checkout_name;
 	protected $tasks = array(  // comma placement is for easier commenting of code during development
 		'claim' => array(
 			"task" => "Claim",
@@ -44,7 +45,45 @@ class VMC extends Workflows {
 	}
 
 	/**
-	* Sets the Pattern for Searching
+	* GETTER - Confirm if Checkout Name is Set
+	*
+	* Descirption: Checks if the name.txt file exists, checks if 
+	* the file contains any content (name) and returns the name. 
+	* Otherwise it return false.
+	* @param NONE
+	* @return YES - 'string' : checkout name
+	*		  NO  - boolean  : false
+	*/
+	protected function is_name_set() {
+
+		// Check if the name file exisis
+		if ( file_exists( 'name.txt' ) ) {
+
+			$text = file_get_contents( 'name.txt' );
+
+			// Check if anything is written to the file
+			if ( strlen( $text ) > 0 ) { 
+
+				$this->checkout_name = $text;
+				// return the checkout name
+				return $this->checkout_name;
+
+			}
+
+			else {
+				// remove the empty file
+				unlink('name.txt');
+				return false;
+			}
+		}
+
+		else {
+			return false;
+		}
+	}
+
+	/**
+	* SETTER - Sets the Pattern for Searching
 	*
 	* Description: Accepts a string it concatinates a regular
 	* expression pattern to be used for searching
@@ -71,11 +110,30 @@ class VMC extends Workflows {
 
 		foreach( $this->tasks as $index => $func ) {
 
-			// IF user matches a VM task name OR is an empty string
-			if ( preg_match( $this->pattern, $func['task'], $matches) || $query === "" ) {
+			/**
+			* Check for: 
+			*  IF checkout name IS set and the Task name is "Set Name"
+			*  dont create a result
+			*  IF checkout name IS NOT set and the Task name is "Reset Name"
+			*  dont create a result
+			* In other words: This displays better result language based on
+			* current VMC Workflow application state
+			*/
+			if ( $this->is_name_set() !== false && $func['task'] === "Set Name"  ||
+				 $this->is_name_set() === false && $func['task'] === "Reset Name" ) 
+			{
+				continue; // don't make a result
+			}
 
-				// Create a result with the Task name and subtitle
-				$this->result( 'demo', $query, 'task: '.$func['task'] , $func['subtitle'], 'icon.png', 'yes' );
+			// IF user matches a VM task name OR is an empty string
+			else { 
+
+				if ( preg_match( $this->pattern, $func['task'], $matches) || $query === "" ) {
+
+					// Create a result with the Task name and subtitle
+					$this->result( 'demo', $query, $func['task'] , $func['subtitle'], 'icon.png', 'yes' );
+
+				}
 
 			}
 
