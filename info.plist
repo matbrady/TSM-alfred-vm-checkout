@@ -66,7 +66,7 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>38</integer>
 				<key>keyword</key>
@@ -74,7 +74,11 @@
 				<key>runningsubtext</key>
 				<string>please wait text</string>
 				<key>script</key>
-				<string></string>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;request_vm_search( "{query}" ) ;</string>
 				<key>subtext</key>
 				<string>subtext</string>
 				<key>title</key>

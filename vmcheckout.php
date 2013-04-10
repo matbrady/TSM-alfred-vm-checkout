@@ -15,6 +15,7 @@ require_once('workflows.php');
 */ 
 class VMC extends Workflows { 
 
+	protected $query;
 	protected $pattern;
 	protected $checkout_name;
 	protected $tasks = array(  // comma placement is for easier commenting of code during development
@@ -34,10 +35,10 @@ class VMC extends Workflows {
 			"task" => "Set Name",
 			"subtitle" => "Set Your Checkout Name"
 		)
-		,'clearvm' => array(
-			"task" => "Clear",
-			"subtitle" => "Clear Your VM Checkout Name"
-		)
+		// ,'clearvm' => array(
+		// 	"task" => "Clear",
+		// 	"subtitle" => "Clear Your VM Checkout Name"
+		// )
 	);
 
 	public function __construct() {
@@ -52,7 +53,7 @@ class VMC extends Workflows {
 	* Otherwise it return false.
 	* @param NONE
 	* @return YES - 'string' : checkout name
-	*		  NO  - boolean  : false
+	* @return NO  - boolean  : false
 	*/
 	protected function is_name_set() {
 
@@ -143,6 +144,51 @@ class VMC extends Workflows {
 	}
 
 	/**
+	* Request VM Search
+	*
+	* Description: Check if a checkout name is set which is required 
+	* checkout a VM. If it IS NOT, request a name. Otherwise display
+	* all the available VMs
+	* @param 'string' : user input or query
+	* @return XML : Available VM data from server
+	* -OR-
+	* @return XML : Prompt for Checkout Name
+	*/
+	public function request_vm_search( $query ) {
+
+		$this->query = $query;
+
+		// Name is set
+		if ( $this->is_name_set() !== false ) {
+			
+		}
+		else {
+
+			$prompt = array(
+				"data" => $this->query,
+				"title" => "Set Name: ".$this->query,
+				"subtitle" => "Enter a name to be used to checkout a VM",
+				"image" => "icon.png",
+				);
+
+			return $this->prompt_user( $prompt );
+		}
+	}
+
+	/**
+	* Prompt User for Checkout Name
+	*
+	* Description: Generate 
+	*/
+	protected function prompt_user( $prompt ) {
+
+		$this->result( 'demo', $prompt['data'], $prompt['title'], $prompt['subtitle'], $prompt['image'], 'yes' );
+
+		return $this->toxml();
+
+	}
+
+	/**
 	*/
 	public function run_task() {}
 
@@ -175,5 +221,9 @@ class VMC extends Workflows {
 	}
 
 }
+
+// $VMC = new VMC();
+
+// echo $VMC->request_vm_search( "{query}" ) ;
 
 ?>
