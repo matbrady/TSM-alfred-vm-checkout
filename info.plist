@@ -115,7 +115,7 @@ echo $VMC::stepTwo( "{query}", false );</string>
 
 $VMC = new VMC();
 
-echo $VMC::tasks( "{query}" );</string>
+echo $VMC-&gt;tasks( "{query}" ) ;</string>
 				<key>subtext</key>
 				<string>Claim and Vacate Threespot Virtual Machines</string>
 				<key>title</key>
@@ -123,7 +123,7 @@ echo $VMC::tasks( "{query}" );</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
