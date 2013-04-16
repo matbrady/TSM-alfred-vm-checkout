@@ -158,7 +158,7 @@ class VMC extends Workflows {
 	* -OR-
 	* @return XML : Prompt for Checkout Name
 	*/
-	public function request_vm_search( $query ) {
+	public function request_vm_search( $action, $query ) {
 
 		$this->query = $query;
 
@@ -167,8 +167,18 @@ class VMC extends Workflows {
 
 			// set the search pattern
 			$this->set_match_pattern( $query );
+
+			switch ( $action ) {
+				case "claim":
+					return $this->search_available_vms();
+				break;
+
+				case "vacate":	
+					return $this->search_claimed_vms();
+				break;
+
+			} 
 			
-			return $this->search_available_vms();
 
 		}
 
@@ -269,7 +279,42 @@ class VMC extends Workflows {
 		// }
 
 		return $this->toxml();
+	}
 
+	/**
+	* Search Server for Claimed Virtual Machines
+	*
+	* @param 'string' : user input or query
+	* @return XML : Claimed VM results
+	*/
+	protected function search_claimed_vms() {
+
+		$url = "http://vm-checkout.threespot.dev/vm.php";
+
+		$all_vm_data = $this->fetch_all_data( $url );
+
+		$name = $this->get_checkout_name();
+
+		foreach( $all_vm_data as $index => $vm ) {
+
+			if ( isset($vm->user) && $vm->user === $name ) {
+
+				$vm->task = "vacate";
+				$vm->url = $url;
+				$vm->action = "vacate_vm";
+				$vm->name = $this->get_checkout_name();
+
+				$this->result( $index , json_encode($vm) , $vm->vm, "Vacate Virtual Machine ".$vm->vm . " ". $vm->user, 'icon.png', 'yes' );
+			}
+		}
+
+		$results = $this->results();
+
+		// if ( count( $results ) == 0 ) {
+		// 	self::$wf->result( 'googlesuggest', self::$query, 'No Suggestions', 'No search suggestions found. Search Google for '.self::$query, 'icon.png' );
+		// }
+
+		return $this->toxml();
 	}
 
 	/**
@@ -308,6 +353,13 @@ class VMC extends Workflows {
 
 	}
 
+
+	/**
+	* Get Current VM Checkout Name
+	*
+	* @param NONE
+	* @return 'string' : user's VM checkout name
+	*/
 	protected function get_checkout_name() {
 
 		return file_get_contents( 'name.txt' );
@@ -325,10 +377,6 @@ class VMC extends Workflows {
 			case 'set_name':
 				file_put_contents( 'name.txt', $data->query );
 				return $data->message;
-			break;
-
-			case 'claim_vm':
-
 			break;
 
 			default: 
