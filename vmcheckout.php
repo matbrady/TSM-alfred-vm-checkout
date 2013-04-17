@@ -379,6 +379,11 @@ class VMC extends Workflows {
 				return $data->message;
 			break;
 
+			case 'vacate_vm':
+				return 'Vacating your VM';
+
+			break;
+
 			default: 
 				return '';
 			break;
@@ -392,7 +397,7 @@ class VMC extends Workflows {
 	* Description: Checks for the claim_vm action, 
 	* sends a PUT request to claim a VM from the server,
 	* notifies the user of successful claim.
-	* @param OBJECT : data passed from vm results
+	* @param 'string'/OBJECT : data passed from vm results
 	* @return 'string' : response from CURL command
 	*/	
 	public function claim_vm( $passed_data ) {
@@ -401,11 +406,31 @@ class VMC extends Workflows {
 
 		if ( $data->action === 'claim_vm' ) {
 
-			return $this->send_vm_claim_request( $data );
+			return $this->update_server( 'PUT', $data );
 		}
 
 		else return '';
+	}
 
+	/**
+	* Vacate a Claimed Virtual Machine
+	*
+	* Description: Checks for the vacate_vm action,
+	* sends a DELETE request to vacate a VM from the server,
+	* notifies the user of a successful vacation ;)
+	* @param 'string'/OBJECT : data passed from vm results
+	* @return 'string' : repsonse from CURL command
+	*/
+	public function vacate_vm( $passed_data ) {
+
+		$data = json_decode($passed_data);
+
+		if ( $data->action === 'vacate_vm' ) {
+
+			return $this->update_server( 'DELETE', $data );
+		}
+
+		else return '';
 	}
 
 	/**
@@ -416,7 +441,7 @@ class VMC extends Workflows {
 	* @param Object : data used to generate curl command
 	* @return 'string' : message to user
 	*/
-	protected function send_vm_claim_request( $data ) {
+	protected function update_server( $type, $data ) {
 
 		date_default_timezone_set('America/New_York');
 		$date = date("Y-m-d H:i:s");
@@ -431,7 +456,7 @@ class VMC extends Workflows {
 		  	CURLOPT_HTTPHEADER => array('Content-Type: application/json','Content-Length: ' . strlen( $update_json ) ),
 		  	CURLOPT_VERBOSE => 1,
 		  	CURLOPT_RETURNTRANSFER => true,
-		  	CURLOPT_CUSTOMREQUEST => "PUT",
+		  	CURLOPT_CUSTOMREQUEST => $type,
 		  	CURLOPT_POSTFIELDS => $update_json,
 		  	CURLOPT_SSL_VERIFYPEER => 0,
 		);
@@ -452,13 +477,6 @@ class VMC extends Workflows {
 		else {
 		  return 'You now own '.$data->vm;
 		}
-	}
-
-	/**
-	* Vacate a Claimed Virtaul Machine
-	*/	
-	protected function vacate_vm() {
-
 	}
 
 	/**
