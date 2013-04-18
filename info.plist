@@ -365,17 +365,17 @@ echo $VMC::stepTwo( "{query}", true );
 		<key>0946DC1D-D792-48DD-9969-CBAF864C72C3</key>
 		<dict>
 			<key>ypos</key>
-			<real>380</real>
+			<real>330</real>
 		</dict>
 		<key>14923BA6-787A-45BE-BAAB-4CFC5B22217D</key>
 		<dict>
 			<key>ypos</key>
-			<real>380</real>
+			<real>330</real>
 		</dict>
 		<key>18006E01-F660-485D-BE0B-6F3D08DB7202</key>
 		<dict>
 			<key>ypos</key>
-			<real>250</real>
+			<real>200</real>
 		</dict>
 		<key>2352FA69-2FE0-4804-A0F1-D5AB869030DC</key>
 		<dict>
@@ -385,12 +385,12 @@ echo $VMC::stepTwo( "{query}", true );
 		<key>65880ED7-7AA7-4322-A0DD-D721F7A569F2</key>
 		<dict>
 			<key>ypos</key>
-			<real>250</real>
+			<real>200</real>
 		</dict>
 		<key>8990735D-08D8-4160-8A0F-0E26EFA886B6</key>
 		<dict>
 			<key>ypos</key>
-			<real>380</real>
+			<real>330</real>
 		</dict>
 		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
 		<dict>
@@ -400,17 +400,17 @@ echo $VMC::stepTwo( "{query}", true );
 		<key>9088C44D-E220-44C0-B316-C3EB507AAE4E</key>
 		<dict>
 			<key>ypos</key>
-			<real>510</real>
+			<real>460</real>
 		</dict>
 		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
 		<dict>
 			<key>ypos</key>
-			<real>50</real>
+			<real>70</real>
 		</dict>
 		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
 		<dict>
 			<key>ypos</key>
-			<real>510</real>
+			<real>460</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

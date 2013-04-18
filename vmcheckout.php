@@ -379,10 +379,9 @@ class VMC extends Workflows {
 				return $data->message;
 			break;
 
-			case 'vacate_vm':
-				return 'Vacating your VM';
-
-			break;
+			// case 'vacate_vm':
+			// 	return 'Vacating your VM';
+			// break;
 
 			default: 
 				return '';
@@ -434,10 +433,10 @@ class VMC extends Workflows {
 	}
 
 	/**
-	* Send Claim Request to Server
+	* Send Request to Server
 	*
 	* Description: Creates a JSON string and sends a PUT 
-	* request to ther server for claiming a VM
+	* request to ther server for claiming or vacating a VM
 	* @param Object : data used to generate curl command
 	* @return 'string' : message to user
 	*/
@@ -446,7 +445,28 @@ class VMC extends Workflows {
 		date_default_timezone_set('America/New_York');
 		$date = date("Y-m-d H:i:s");
 
-		$update_json = '{"id":"'.$data->id.'","user":"'.$data->name.'","checkout":"'.$date.'"}';
+		$messages = array(
+				'put' => 'You now own '. $data->vm,
+				'delete' => $data->vm.' has been Vacated'
+			);
+
+		switch ( $type ) {
+
+			case 'PUT':
+				$update_json = '{"id":"'.$data->id.'","user":"'.$data->name.'","checkout":"'.$date.'"}';
+				$notification = $messages['put'];
+			break;
+
+			case 'DELETE':
+				$update_json = '{"id":"'.$data->id.'","user":"","checkout":""}';
+				$notification = $messages['delete'];
+			break;
+
+			default:
+				return 'Something went horribly wrong.';
+			break;
+
+		} 
 
 		$chlead = curl_init();
 
@@ -456,26 +476,22 @@ class VMC extends Workflows {
 		  	CURLOPT_HTTPHEADER => array('Content-Type: application/json','Content-Length: ' . strlen( $update_json ) ),
 		  	CURLOPT_VERBOSE => 1,
 		  	CURLOPT_RETURNTRANSFER => true,
-		  	CURLOPT_CUSTOMREQUEST => $type,
+		  	CURLOPT_CUSTOMREQUEST => "PUT",
 		  	CURLOPT_POSTFIELDS => $update_json,
 		  	CURLOPT_SSL_VERIFYPEER => 0,
 		);
 
 		curl_setopt_array($chlead, $options);
 
-		$chleadresult = curl_exec($chlead);
-		$chleadapierr = curl_errno($chlead);
-		$chleaderrmsg = curl_error($chlead);
+		$curl_result = curl_exec($chlead);
+		$curl_error = curl_error($chlead);
 		curl_close($chlead);
 
-		if ( $chleadapierr === 1 ) {
-		  	return $chleadapierr;
-		}
-		else if ( $chleaderrmsg === 1 ) {
-			return $chleaderrmsg;
+		if ( $curl_result === false ) {
+		  	return $curl_error;
 		}
 		else {
-		  return 'You now own '.$data->vm;
+		  return $notification;
 		}
 	}
 
