@@ -40,10 +40,6 @@ class VMC extends Workflows {
 			"title" => "Set Name",
 			"subtitle" => "Set Your Checkout Name"
 		)
-		// ,'clearvm' => array(
-		// 	"task" => "Clear",
-		// 	"subtitle" => "Clear Your VM Checkout Name"
-		// )
 	);
 
 	public function __construct() {
@@ -307,7 +303,7 @@ class VMC extends Workflows {
 				$vm->action = "vacate_vm";
 				$vm->name = $name;
 
-				$this->result( $index , json_encode($vm) , $vm->vm, "Vacate Virtual Machine ".$vm->vm . " ". $vm->user, 'icon.png', 'yes' );
+				$this->result( $index , json_encode($vm) , $vm->vm, "Vacate Virtual Machine ".$vm->vm, 'icon.png', 'yes' );
 
 				array_push( $claimed_vms, $vm->id );
 			}
@@ -518,6 +514,8 @@ class VMC extends Workflows {
 	/**
 	* Send Request to the Server
 	*
+	* Description: Accepts a JSON string that is used to 
+	* populate a php CURL command
 	* @param 
 	* @return
 	*/
@@ -542,10 +540,14 @@ class VMC extends Workflows {
 		$curl_error = curl_error($chlead);
 		curl_close($chlead);
 
+		return $curl_error === '' ? true : false;
+
 	}
 
 	/**
 	* Update this Workflow to a newer Version
+	* NOTE: Not sure how to accomplish this yet
+	* Overwrite existing files
 	*/	
 	protected function update_workflow() {
 

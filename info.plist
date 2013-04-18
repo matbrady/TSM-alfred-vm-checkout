@@ -113,40 +113,33 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>38</integer>
+				<key>keyword</key>
+				<string>set</string>
+				<key>runningsubtext</key>
+				<string>Hold on a minute, we're thinking</string>
 				<key>script</key>
 				<string>require_once('vmcheckout.php');
 
 $VMC = new VMC();
 
-echo $VMC-&gt;notify_user( "{query}" ) ;</string>
+echo $VMC-&gt;request_name_change( "{query}" ) ;</string>
+				<key>subtext</key>
+				<string>Change Your Virtual Machine Checkout Name</string>
+				<key>title</key>
+				<string>Reset Virtual Checkout Name</string>
 				<key>type</key>
 				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>38</integer>
-				<key>script</key>
-				<string>require_once('vmcheckout.php');
-
-$VMC = new VMC();
-
-echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
-				<key>type</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
+			<string>18006E01-F660-485D-BE0B-6F3D08DB7202</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -194,7 +187,7 @@ echo $VMC-&gt;vacate_vm( "{query}" ) ;</string>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>38</integer>
 				<key>keyword</key>
@@ -212,36 +205,12 @@ echo $VMC-&gt;request_vm_search( "vacate", "{query}" ) ;</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>14923BA6-787A-45BE-BAAB-4CFC5B22217D</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>script</key>
-				<string>set temp to "{query}"
-if temp is "claim" then
-	tell application "Alfred 2" to search "claim "
-else if temp is "vacate" then 
-	tell application "Alfred 2" to search "vacate"
-else if temp is "set" then
-	tell application "Alfred 2" to search "set "
-else if temp is "clear" then
-	tell application "Alfred 2" to search "clearvm"
-end if</string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.script</string>
-			<key>uid</key>
-			<string>2352FA69-2FE0-4804-A0F1-D5AB869030DC</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -277,6 +246,68 @@ echo $VMC-&gt;display_tasks( "{query}" ) ;</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>set temp to "{query}"
+if temp is "claim" then
+	tell application "Alfred 2" to search "claim "
+else if temp is "vacate" then 
+	tell application "Alfred 2" to search "vacate"
+else if temp is "set" then
+	tell application "Alfred 2" to search "set "
+else if temp is "clear" then
+	tell application "Alfred 2" to search "clearvm"
+end if</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>2352FA69-2FE0-4804-A0F1-D5AB869030DC</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;notify_user( "{query}" ) ;</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -298,43 +329,12 @@ echo $VMC-&gt;request_vm_search( "claim", "{query}" ) ;</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>D828191E-DFA7-4172-8AFC-F027A725DFC8</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>38</integer>
-				<key>keyword</key>
-				<string>set</string>
-				<key>runningsubtext</key>
-				<string>Hold on a minute, we're thinking</string>
-				<key>script</key>
-				<string>require_once('vmcheckout.php');
-
-$VMC = new VMC();
-
-echo $VMC-&gt;request_name_change( "{query}" ) ;</string>
-				<key>subtext</key>
-				<string>Change Your Virtual Machine Checkout Name</string>
-				<key>title</key>
-				<string>Reset Virtual Checkout Name</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>18006E01-F660-485D-BE0B-6F3D08DB7202</string>
 		</dict>
 	</array>
 	<key>readme</key>
