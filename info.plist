@@ -231,7 +231,7 @@ echo $VMC-&gt;request_vm_search( "vacate", "{query}" ) ;</string>
 if temp is "claim" then
 	tell application "Alfred 2" to search "claim "
 else if temp is "vacate" then 
-	tell application "Alfred 2" to search "vacate "
+	tell application "Alfred 2" to search "vacate"
 else if temp is "set" then
 	tell application "Alfred 2" to search "set "
 else if temp is "clear" then
