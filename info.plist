@@ -6,11 +6,22 @@
 	<string>com.alfredapp.mat.vmcheckout</string>
 	<key>connections</key>
 	<dict>
+		<key>0946DC1D-D792-48DD-9969-CBAF864C72C3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>14923BA6-787A-45BE-BAAB-4CFC5B22217D</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
+				<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -18,7 +29,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+				<string>0946DC1D-D792-48DD-9969-CBAF864C72C3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -69,13 +80,11 @@
 				<string></string>
 			</dict>
 		</array>
-		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
-		<array/>
 		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
+				<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -83,7 +92,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+				<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -104,33 +113,82 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
 				<key>escaping</key>
 				<integer>38</integer>
-				<key>keyword</key>
-				<string>set</string>
-				<key>runningsubtext</key>
-				<string>Hold on a minute, we're thinking</string>
 				<key>script</key>
 				<string>require_once('vmcheckout.php');
 
 $VMC = new VMC();
 
-echo $VMC-&gt;request_name_change( "{query}" ) ;</string>
-				<key>subtext</key>
-				<string>Change Your Virtual Machine Checkout Name</string>
-				<key>title</key>
-				<string>Reset Virtual Checkout Name</string>
+echo $VMC-&gt;notify_user( "{query}" ) ;</string>
 				<key>type</key>
 				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>18006E01-F660-485D-BE0B-6F3D08DB7202</string>
+			<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;vacate_vm( "{query}" ) ;</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0946DC1D-D792-48DD-9969-CBAF864C72C3</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>VM-checkout</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -164,29 +222,6 @@ echo $VMC-&gt;request_vm_search( "vacate", "{query}" ) ;</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>VM-checkout</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>escaping</key>
 				<integer>63</integer>
 				<key>script</key>
@@ -194,7 +229,7 @@ echo $VMC-&gt;request_vm_search( "vacate", "{query}" ) ;</string>
 if temp is "claim" then
 	tell application "Alfred 2" to search "claim "
 else if temp is "vacate" then 
-	tell application "Alfred 2" to search "vacate "
+	tell application "Alfred 2" to search "vacate"
 else if temp is "set" then
 	tell application "Alfred 2" to search "set "
 else if temp is "clear" then
@@ -242,25 +277,6 @@ echo $VMC-&gt;display_tasks( "{query}" ) ;</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>38</integer>
-				<key>script</key>
-				<string>require_once('vmcheckout.php');
-$VMC = new VMC();
-
-echo $VMC::stepTwo( "{query}", true );
-</string>
-				<key>type</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A9ADDD8F-781D-4F6D-900E-B245E2852A22</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -292,55 +308,53 @@ echo $VMC-&gt;request_vm_search( "claim", "{query}" ) ;</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>38</integer>
+				<key>keyword</key>
+				<string>set</string>
+				<key>runningsubtext</key>
+				<string>Hold on a minute, we're thinking</string>
 				<key>script</key>
 				<string>require_once('vmcheckout.php');
 
 $VMC = new VMC();
 
-echo $VMC-&gt;notify_user( "{query}" ) ;</string>
+echo $VMC-&gt;request_name_change( "{query}" ) ;</string>
+				<key>subtext</key>
+				<string>Change Your Virtual Machine Checkout Name</string>
+				<key>title</key>
+				<string>Reset Virtual Checkout Name</string>
 				<key>type</key>
 				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>38</integer>
-				<key>script</key>
-				<string>require_once('vmcheckout.php');
-
-$VMC = new VMC();
-
-echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
-				<key>type</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
+			<string>18006E01-F660-485D-BE0B-6F3D08DB7202</string>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0946DC1D-D792-48DD-9969-CBAF864C72C3</key>
+		<dict>
+			<key>ypos</key>
+			<real>260</real>
+		</dict>
 		<key>14923BA6-787A-45BE-BAAB-4CFC5B22217D</key>
 		<dict>
 			<key>ypos</key>
-			<real>170</real>
+			<real>260</real>
 		</dict>
 		<key>18006E01-F660-485D-BE0B-6F3D08DB7202</key>
 		<dict>
 			<key>ypos</key>
-			<real>410</real>
+			<real>130</real>
 		</dict>
 		<key>2352FA69-2FE0-4804-A0F1-D5AB869030DC</key>
 		<dict>
@@ -350,12 +364,12 @@ echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
 		<key>65880ED7-7AA7-4322-A0DD-D721F7A569F2</key>
 		<dict>
 			<key>ypos</key>
-			<real>410</real>
+			<real>130</real>
 		</dict>
 		<key>8990735D-08D8-4160-8A0F-0E26EFA886B6</key>
 		<dict>
 			<key>ypos</key>
-			<real>290</real>
+			<real>260</real>
 		</dict>
 		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
 		<dict>
@@ -365,17 +379,12 @@ echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
 		<key>9088C44D-E220-44C0-B316-C3EB507AAE4E</key>
 		<dict>
 			<key>ypos</key>
-			<real>290</real>
-		</dict>
-		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
-		<dict>
-			<key>ypos</key>
-			<real>50</real>
+			<real>390</real>
 		</dict>
 		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
 		<dict>
 			<key>ypos</key>
-			<real>290</real>
+			<real>390</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

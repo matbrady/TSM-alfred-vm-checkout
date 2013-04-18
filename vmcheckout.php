@@ -17,6 +17,7 @@ class VMC extends Workflows {
 
 	protected $query;
 	protected $pattern;
+	protected $url = "http://vm-checkout.threespot.dev/vm.php";
 	protected $checkout_name;
 	protected $tasks = array(  // comma placement is for easier commenting of code during development
 		'claim' => array(
@@ -255,7 +256,7 @@ class VMC extends Workflows {
 	*/
 	protected function search_available_vms() {
 
-		$url = "http://vm-checkout.threespot.dev/vm.php";
+		$url = $this->url;
 
 		$all_vm_data = $this->fetch_all_data( $url );
 
@@ -289,11 +290,13 @@ class VMC extends Workflows {
 	*/
 	protected function search_claimed_vms() {
 
-		$url = "http://vm-checkout.threespot.dev/vm.php";
+		$url = $this->url;
 
 		$all_vm_data = $this->fetch_all_data( $url );
 
 		$name = $this->get_checkout_name();
+
+		$claimed_vms = array();
 
 		foreach( $all_vm_data as $index => $vm ) {
 
@@ -302,17 +305,29 @@ class VMC extends Workflows {
 				$vm->task = "vacate";
 				$vm->url = $url;
 				$vm->action = "vacate_vm";
-				$vm->name = $this->get_checkout_name();
+				$vm->name = $name;
 
 				$this->result( $index , json_encode($vm) , $vm->vm, "Vacate Virtual Machine ".$vm->vm . " ". $vm->user, 'icon.png', 'yes' );
+
+				array_push( $claimed_vms, $vm->id );
 			}
+		}
+
+		// If Claimed VMS is more than one add a 'Vacate All VM' result
+		if ( count($claimed_vms) > 1 ) {
+			$vacate_all_data->task = 'clear';
+			$vacate_all_data->action = 'vacate_all';
+			$vacate_all_data->name = $name;
+			$vacate_all_data->claimed_vms = $claimed_vms;
+
+			$this->result( $index++, json_encode($vacate_all_data), "Vacate All VMs", "Vacate from all dropped Virtual Machines", 'icon.png', 'yes' );
 		}
 
 		$results = $this->results();
 
-		// if ( count( $results ) == 0 ) {
-		// 	self::$wf->result( 'googlesuggest', self::$query, 'No Suggestions', 'No search suggestions found. Search Google for '.self::$query, 'icon.png' );
-		// }
+		if ( count( $results ) == 0 ) {
+			$this->result( 0, 'false', "No VMs owned by '".$name."'", 'Crap, it looks like you might have to visit the actual VM checkout', 'icon.png' );
+		}
 
 		return $this->toxml();
 	}
@@ -379,6 +394,10 @@ class VMC extends Workflows {
 				return $data->message;
 			break;
 
+			// case 'vacate_vm':
+			// 	return 'Vacating your VM';
+			// break;
+
 			default: 
 				return '';
 			break;
@@ -392,7 +411,7 @@ class VMC extends Workflows {
 	* Description: Checks for the claim_vm action, 
 	* sends a PUT request to claim a VM from the server,
 	* notifies the user of successful claim.
-	* @param OBJECT : data passed from vm results
+	* @param 'string'/OBJECT : data passed from vm results
 	* @return 'string' : response from CURL command
 	*/	
 	public function claim_vm( $passed_data ) {
@@ -401,33 +420,114 @@ class VMC extends Workflows {
 
 		if ( $data->action === 'claim_vm' ) {
 
-			return $this->send_vm_claim_request( $data );
+			return $this->update_server( 'PUT', $data );
 		}
 
 		else return '';
-
 	}
 
 	/**
-	* Send Claim Request to Server
+	* Vacate a Claimed Virtual Machine
+	*
+	* Description: Checks for the vacate_vm action,
+	* sends a DELETE request to vacate a VM from the server,
+	* notifies the user of a successful vacation ;)
+	* @param 'string'/OBJECT : data passed from vm results
+	* @return 'string' : repsonse from CURL command
+	*/
+	public function vacate_vm( $passed_data ) {
+
+		$data = json_decode($passed_data);
+
+		if ( $data->action === 'vacate_vm' ) {
+
+			return $this->update_server( 'DELETE', $data );
+		}
+		else if ( $data->action === 'vacate_all' ) {
+			 
+			return $this->update_server( 'CLEAR', $data );
+		}
+
+		else return '';
+	}
+
+	/**
+	* Create Request to Server
 	*
 	* Description: Creates a JSON string and sends a PUT 
-	* request to ther server for claiming a VM
+	* request to ther server for claiming or vacating a VM
 	* @param Object : data used to generate curl command
 	* @return 'string' : message to user
 	*/
-	protected function send_vm_claim_request( $data ) {
+	protected function update_server( $type, $data ) {
 
 		date_default_timezone_set('America/New_York');
 		$date = date("Y-m-d H:i:s");
 
-		$update_json = '{"id":"'.$data->id.'","user":"'.$data->name.'","checkout":"'.$date.'"}';
+		$messages = array(
+				'put' => 'You now own '. $data->vm,
+				'delete' => $data->vm.' has been Vacated'
+			);
+
+		switch ( $type ) {
+
+			case 'PUT':
+				$update_json = '{"id":"'.$data->id.'","user":"'.$data->name.'","checkout":"'.$date.'"}';
+				$notification = $messages['put'];
+				$good_request = $this->send_curl( $update_json );
+			break;
+
+			case 'DELETE':
+				$update_json = '{"id":"'.$data->id.'","user":"","checkout":""}';
+				$notification = $messages['delete'];
+				$good_request = $this->send_curl( $update_json );
+			break;
+
+			case 'CLEAR':
+
+				$name = $this->get_checkout_name();
+
+				foreach( $data->claimed_vms as $index => $id ) {
+
+ 					$update_json = '{"id":"'.$id.'","user":"","checkout":""}';
+
+					$good_request = $this->send_curl( $update_json );
+
+					$notification = 'All Your VMS have been Vacated';
+
+				}
+
+			break;
+
+			default:
+				// Otherwise notify the user something is broken
+				return 'Something went horribly wrong.';
+			break;
+
+		} 
+
+
+		if ( $good_request === false ) {
+		  	return $curl_error;
+		}
+		else {
+		  return $notification;
+		}
+	}
+
+	/**
+	* Send Request to the Server
+	*
+	* @param 
+	* @return
+	*/
+	protected function send_curl( $update_json ) {
 
 		$chlead = curl_init();
 
 		// set URL and other appropriate options
 		$options = array(
-			CURLOPT_URL => $data->url,
+			CURLOPT_URL => $this->url,
 		  	CURLOPT_HTTPHEADER => array('Content-Type: application/json','Content-Length: ' . strlen( $update_json ) ),
 		  	CURLOPT_VERBOSE => 1,
 		  	CURLOPT_RETURNTRANSFER => true,
@@ -438,26 +538,9 @@ class VMC extends Workflows {
 
 		curl_setopt_array($chlead, $options);
 
-		$chleadresult = curl_exec($chlead);
-		$chleadapierr = curl_errno($chlead);
-		$chleaderrmsg = curl_error($chlead);
+		$curl_result = curl_exec($chlead);
+		$curl_error = curl_error($chlead);
 		curl_close($chlead);
-
-		if ( $chleadapierr === 1 ) {
-		  	return $chleadapierr;
-		}
-		else if ( $chleaderrmsg === 1 ) {
-			return $chleaderrmsg;
-		}
-		else {
-		  return 'You now own '.$data->vm;
-		}
-	}
-
-	/**
-	* Vacate a Claimed Virtaul Machine
-	*/	
-	protected function vacate_vm() {
 
 	}
 
