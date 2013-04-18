@@ -390,10 +390,6 @@ class VMC extends Workflows {
 				return $data->message;
 			break;
 
-			// case 'vacate_vm':
-			// 	return 'Vacating your VM';
-			// break;
-
 			default: 
 				return '';
 			break;
@@ -483,6 +479,7 @@ class VMC extends Workflows {
 
 				$name = $this->get_checkout_name();
 
+				// For each claimed machine sent vacate request
 				foreach( $data->claimed_vms as $index => $id ) {
 
  					$update_json = '{"id":"'.$id.'","user":"","checkout":""}';
@@ -499,9 +496,7 @@ class VMC extends Workflows {
 				// Otherwise notify the user something is broken
 				return 'Something went horribly wrong.';
 			break;
-
 		} 
-
 
 		if ( $good_request === false ) {
 		  	return $curl_error;
@@ -516,8 +511,10 @@ class VMC extends Workflows {
 	*
 	* Description: Accepts a JSON string that is used to 
 	* populate a php CURL command
-	* @param 
-	* @return
+	* @param 'sting'/JSON : update statement used in curl
+	* @return boolean : TRUE on successful curl
+	* -OR-
+	* @return boolean : FALSE on unsuccessful curl
 	*/
 	protected function send_curl( $update_json ) {
 
@@ -540,6 +537,7 @@ class VMC extends Workflows {
 		$curl_error = curl_error($chlead);
 		curl_close($chlead);
 
+		// If an Error did NOT occur return true, ELSE return false
 		return $curl_error === '' ? true : false;
 
 	}
