@@ -2,7 +2,6 @@
 # Alfred Virtual Machine Checkout
 
 A Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
-_______________________________________________________________________________
 
 ## Download
 
