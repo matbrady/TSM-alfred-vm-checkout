@@ -91,6 +91,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
 		<array>
 			<dict>
@@ -111,11 +122,11 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>DABD751B-23F0-464E-80C8-7568F35AAB50</string>
+				<string>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
-				<string>Remote Desktop Connection will be opened</string>
+				<string>Open Remote Desktop Connection</string>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -128,6 +139,14 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>AFF0DA6A-3E7E-4F6F-B2E2-A23604BA5D99</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DABD751B-23F0-464E-80C8-7568F35AAB50</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
@@ -385,17 +404,21 @@ echo $VMC-&gt;request_vm_search( "claim", "{query}" ) ;</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Remote Desktop Connection.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;notify_user( "{query}" ) ;</string>
+				<key>type</key>
+				<integer>1</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>DABD751B-23F0-464E-80C8-7568F35AAB50</string>
+			<string>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -447,6 +470,21 @@ echo $VMC-&gt;get_output_query( "{query}" );</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>AFF0DA6A-3E7E-4F6F-B2E2-A23604BA5D99</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Remote Desktop Connection.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>DABD751B-23F0-464E-80C8-7568F35AAB50</string>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -520,6 +558,11 @@ If you have more than one vm checked out, a 'Vacate All VMs' result will be show
 			<key>ypos</key>
 			<real>790</real>
 		</dict>
+		<key>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</key>
+		<dict>
+			<key>ypos</key>
+			<real>530</real>
+		</dict>
 		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
 		<dict>
 			<key>ypos</key>
@@ -528,7 +571,7 @@ If you have more than one vm checked out, a 'Vacate All VMs' result will be show
 		<key>DABD751B-23F0-464E-80C8-7568F35AAB50</key>
 		<dict>
 			<key>ypos</key>
-			<real>530</real>
+			<real>920</real>
 		</dict>
 		<key>EC0DE900-6361-4390-84EF-56F2C94DE41E</key>
 		<dict>

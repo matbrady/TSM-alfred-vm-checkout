@@ -95,7 +95,6 @@ class VMC extends Workflows {
 	protected function set_match_pattern( $query ) {
 
 		$this->pattern = "/".$query."/i";
-
 	}
 
 	/**
@@ -129,7 +128,7 @@ class VMC extends Workflows {
 			// IF user matches a VM task name OR is an empty string
 			else { 
 
-				if ( preg_match( $this->pattern, $func['task'], $matches) || $query === "" ) {
+				if ( preg_match( $this->pattern, $func['title'], $matches) || $query === "" ) {
 
 					// Create a result with the Task name and subtitle
 					$this->result( 'demo', $func['task'], $func['title'], $func['subtitle'], 'icon.png', 'yes' );
@@ -341,6 +340,7 @@ class VMC extends Workflows {
 		return json_decode( $data );
 	}
 
+
 	/**
 	* Prompt User for Information
 	*
@@ -356,13 +356,6 @@ class VMC extends Workflows {
 		return $this->toxml();
 	}
 
-	/**
-	* Set the Name used to Claim and Vacate a VM listing
-	*/
-	protected function set_checkout_name() {
-
-	}
-
 
 	/**
 	* Get Current VM Checkout Name
@@ -374,6 +367,7 @@ class VMC extends Workflows {
 
 		return file_get_contents( 'name.txt' );
 	}
+
 
 	/**
 	* Notify the User
@@ -389,8 +383,14 @@ class VMC extends Workflows {
 		switch (  $data->action ) {
 
 			case 'set_name':
-				file_put_contents( 'name.txt', $data->query );
-				return $data->message;
+				if ( $data->query === "" ) {
+					return "Please set a valid checkout name";
+				}
+				else {
+					file_put_contents( 'name.txt', $data->query );
+					return $data->message;
+				}
+				
 			break;
 
 			default: 
@@ -398,6 +398,7 @@ class VMC extends Workflows {
 			break;
 		}
 	}
+
 
 	/**
 	* Get Output Query
@@ -422,6 +423,7 @@ class VMC extends Workflows {
 		}
 	}
 
+
 	/**
 	* Claim an Available Virtual Machine
 	*
@@ -442,6 +444,7 @@ class VMC extends Workflows {
 
 		else return '';
 	}
+
 
 	/**
 	* Vacate a Claimed Virtual Machine
@@ -467,6 +470,7 @@ class VMC extends Workflows {
 
 		else return '';
 	}
+
 
 	/**
 	* Create Request to Server
@@ -531,6 +535,7 @@ class VMC extends Workflows {
 		}
 	}
 
+
 	/**
 	* Send Request to the Server
 	*
@@ -564,7 +569,6 @@ class VMC extends Workflows {
 
 		// If an Error did NOT occur return true, ELSE return false
 		return $curl_error === '' ? true : false;
-
 	}
 
 	/**
@@ -573,7 +577,7 @@ class VMC extends Workflows {
 	* Overwrite existing files
 	*/	
 	protected function update_workflow() {
-
+		#still trying to figure out the best way to do this
 	}
 
 }
