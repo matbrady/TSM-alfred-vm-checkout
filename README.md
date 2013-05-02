@@ -1,12 +1,12 @@
 TSM-alfred-vm-checkout
 ======================
 
-Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
+A Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
 
 ## Quick Start
-1. [__Set__](#set-name--reset-name) - Run `set` to set your VM checkout name
-2. [__Claim__](#claim) - Run `claim` to search all avaliable vm which can be claimed
-3. [__Vacate__](#vacate) - Run `vacate` to search all personally claimed vms
+1. [__Set__](#set-name--reset-name) - `set` to set your VM checkout name
+2. [__Claim__](#claim) - `claim` to search all avaliable vm which can be claimed
+3. [__Vacate__](#vacate) - `vacate` to search all personally claimed vms
 
 ## Functions
 
@@ -17,9 +17,9 @@ Allow the user to either set or reset a VM checkout name that will be used to cl
 ### Claim 
 Search the server for only available vms.  Selecting a result sends a request to the server which claims the machine and the user in notified that they now own that vm. 
 #### Claim (cmd)
-By holding down `cmd` Remote Desktop Connection will be open.  The name of the vm will be copied to the users clipboard and pasted into the RDC claim
+By holding down `cmd` Remote Desktop Connection will be open.  The name of the vm will be copied to the users clipboard and pasted into the RDC window.
 ### Vacate 
-Search the server for claim vms that match the user name of the VM checkout name providing by running 'Set Name'.  Selecting a result sends a request to the server to vacate the vm and the user is notified that it has been vacated. 
+Search the server for claimed vms that have a username which match the VM checkout name providing by running 'Set Name'.  Selecting a result sends a request to the server to vacate the vm and the user is notified that it has been vacated. 
 If you have more than one vm checked out, a 'Vacate All VMs' result will be shown that allows you to vacate all your claimed vm at once. 
 
 #### Things To Do:
