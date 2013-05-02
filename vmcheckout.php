@@ -315,7 +315,7 @@ class VMC extends Workflows {
 			$vacate_all_data->name = $name;
 			$vacate_all_data->claimed_vms = $claimed_vms;
 
-			$this->result( $index++, json_encode($vacate_all_data), "Vacate All VMs", "Vacate from all dropped Virtual Machines", 'icon.png', 'yes' );
+			$this->result( $index++, json_encode($vacate_all_data), "Vacate All VMs", "Vacate all claimed Virtual Machines", 'icon.png', 'yes' );
 		}
 
 		$results = $this->results();
