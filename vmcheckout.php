@@ -8,7 +8,7 @@ require_once('workflows.php');
 * Classed used for interatctive with the TS
 * Virtual Machine Checkout
 * 
-* @version 	 0.1.0
+* @version 	 0.1.1
 * @author 	 Mathew Brady <mat.brady@threespot.com> 
 * @copyright 2013 
 * @license 	 http://www.php.net/license/3_01.txt PHP License 3.01 
@@ -390,7 +390,7 @@ class VMC extends Workflows {
 					file_put_contents( 'name.txt', $data->query );
 					return $data->message;
 				}
-				
+
 			break;
 
 			default: 
