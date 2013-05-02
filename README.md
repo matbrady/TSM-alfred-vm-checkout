@@ -4,7 +4,7 @@ TSM-alfred-vm-checkout
 Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
 
 ## Quick Start
-1. [__Set__](#set-name-/-reset-name) - Run `set` to set your VM checkout name
+1. [__Set__](#set-name--reset-name) - Run `set` to set your VM checkout name
 2. [__Claim__](#claim) - Run `claim` to search all avaliable vm which can be claimed
 3. [__Vacate__](#vacate) - Run `vacate` to search all personally claimed vms
 
