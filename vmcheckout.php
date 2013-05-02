@@ -159,7 +159,7 @@ class VMC extends Workflows {
 
 		$this->query = $query;
 
-		// Name is set
+		// Name HAS been set
 		if ( $this->is_name_set() !== false ) {
 
 			// set the search pattern
@@ -175,10 +175,9 @@ class VMC extends Workflows {
 				break;
 
 			} 
-			
-
 		}
 
+		// Name has NOT been set
 		else {
 
 			// Create a Prompt Response for Alfred to display in the results
@@ -377,7 +376,11 @@ class VMC extends Workflows {
 	}
 
 	/**
-	* 
+	* Notify the User
+	*
+	* Description: get and return the message from result data
+	* @param JSON 'string' : data from the alfred results
+	* @return 'string' : message to be shown to the user
 	*/
 	public function notify_user( $passed_data ) {
 
@@ -394,7 +397,29 @@ class VMC extends Workflows {
 				return '';
 			break;
 		}
+	}
 
+	/**
+	* Get Output Query
+	*
+	* Description: get and return the message from result data
+	* @param JSON 'string' : data from the alfred results
+	* @return 'string' : message to be shown to the user
+	*/
+	public function get_output_query( $passed_data ) {
+
+		$data = json_decode($passed_data);
+
+		switch (  $data->action ) {
+
+			case 'claim_vm':
+				return $data->vm;
+			break;
+
+			default: 
+				return '';
+			break;
+		}
 	}
 
 	/**
