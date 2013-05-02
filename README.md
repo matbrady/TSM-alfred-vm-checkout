@@ -1,5 +1,5 @@
-![VM Checkout Icon](resources/icon.png "VM Checkout") Alfred Virtual Machine Checkout
-======================
+![VM Checkout Icon](resources/icon.png "VM Checkout")
+# Alfred Virtual Machine Checkout
 
 A Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
 
