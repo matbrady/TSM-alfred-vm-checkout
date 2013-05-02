@@ -6,20 +6,48 @@
 	<string>com.alfredapp.mat.vmcheckout</string>
 	<key>connections</key>
 	<dict>
-		<key>1889701D-1EA3-4290-8B14-A310F3561286</key>
-		<array/>
-		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
+		<key>0946DC1D-D792-48DD-9969-CBAF864C72C3</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>A9ADDD8F-781D-4F6D-900E-B245E2852A22</string>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
 		</array>
-		<key>846C5955-D0FF-45EB-B0CF-58F5389F96C6</key>
+		<key>14923BA6-787A-45BE-BAAB-4CFC5B22217D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>0946DC1D-D792-48DD-9969-CBAF864C72C3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>18006E01-F660-485D-BE0B-6F3D08DB7202</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>65880ED7-7AA7-4322-A0DD-D721F7A569F2</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -34,59 +62,102 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>A9ADDD8F-781D-4F6D-900E-B245E2852A22</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>946AF645-25F4-49DC-B650-F52E9F1AFADA</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>E97A8F20-C006-4FA4-97EE-E2C00FA3FC7A</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>846C5955-D0FF-45EB-B0CF-58F5389F96C6</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
 				<string>2352FA69-2FE0-4804-A0F1-D5AB869030DC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>9088C44D-E220-44C0-B316-C3EB507AAE4E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>AFF0DA6A-3E7E-4F6F-B2E2-A23604BA5D99</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1091B60C-5221-418C-BCB6-B8F3498D6C19</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Open Remote Desktop Connection</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>EC0DE900-6361-4390-84EF-56F2C94DE41E</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>AFF0DA6A-3E7E-4F6F-B2E2-A23604BA5D99</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DABD751B-23F0-464E-80C8-7568F35AAB50</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>EC0DE900-6361-4390-84EF-56F2C94DE41E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8990735D-08D8-4160-8A0F-0E26EFA886B6</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -104,6 +175,140 @@
 	<string>Virtual Machine Checkout</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>keyword</key>
+				<string>vm</string>
+				<key>runningsubtext</key>
+				<string>Trying to figure out what you want to do. . .</string>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;display_tasks( "{query}" ) ;</string>
+				<key>subtext</key>
+				<string>Claim and Vacate Threespot Virtual Machines</string>
+				<key>title</key>
+				<string>Threespot Virtual Machine Checkout</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>set temp to "{query}"
+if temp is "claim" then
+	tell application "Alfred 2" to search "claim "
+else if temp is "vacate" then 
+	tell application "Alfred 2" to search "vacate"
+else if temp is "set" then
+	tell application "Alfred 2" to search "set "
+else if temp is "clear" then
+	tell application "Alfred 2" to search "clearvm"
+end if</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>2352FA69-2FE0-4804-A0F1-D5AB869030DC</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>keyword</key>
+				<string>set</string>
+				<key>runningsubtext</key>
+				<string>Hold on a minute, we're thinking</string>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;request_name_change( "{query}" ) ;</string>
+				<key>subtext</key>
+				<string>Change Your Virtual Machine Checkout Name</string>
+				<key>title</key>
+				<string>Reset Virtual Checkout Name</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>18006E01-F660-485D-BE0B-6F3D08DB7202</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;notify_user( "{query}" ) ;</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>65880ED7-7AA7-4322-A0DD-D721F7A569F2</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>keyword</key>
+				<string>vacate</string>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;request_vm_search( "vacate", "{query}" ) ;</string>
+				<key>subtext</key>
+				<string>Select a Virtual Machine to Vacate</string>
+				<key>title</key>
+				<string>Vacate Virtual Machine</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>14923BA6-787A-45BE-BAAB-4CFC5B22217D</string>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -133,148 +338,37 @@
 				<key>escaping</key>
 				<integer>38</integer>
 				<key>script</key>
-				<string>$vm = json_decode( "{query}" );
-
-date_default_timezone_set('America/New_York');
-$date = date("Y-m-d H:i:s");
-
-$update_json = '{"id":"'.$vm-&gt;id.'","user":"'.$vm-&gt;name.'","checkout":"'.$date.'"}';
-
-$chlead = curl_init();
-
-// set URL and other appropriate options
-$options = array(
-	CURLOPT_URL =&gt; $vm-&gt;url,
-  	CURLOPT_HTTPHEADER =&gt; array('Content-Type: application/json','Content-Length: ' . strlen($update_json) ),
-  	CURLOPT_VERBOSE =&gt; 1,
-  	CURLOPT_RETURNTRANSFER =&gt; true,
-  	CURLOPT_CUSTOMREQUEST =&gt; "PUT",
-  	CURLOPT_POSTFIELDS =&gt; $update_json,
-  	CURLOPT_SSL_VERIFYPEER =&gt; 0,
-);
-
-curl_setopt_array($chlead, $options);
-
-$chleadresult = curl_exec($chlead);
-$chleadapierr = curl_errno($chlead);
-$chleaderrmsg = curl_error($chlead);
-curl_close($chlead);
-
-if ( $chleadapierr === 1 ) {
-  	echo $chleadapierr;
-}
-else if ( $chleaderrmsg === 1 ) {
-	echo $chleaderrmsg;
-}
-else {
-  echo 'You now own '.$vm-&gt;vm;
-}</string>
-				<key>type</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>946AF645-25F4-49DC-B650-F52E9F1AFADA</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>54</integer>
-				<key>script</key>
 				<string>require_once('vmcheckout.php');
+
 $VMC = new VMC();
 
-echo $VMC::stepTwo( "{query}", false );</string>
+echo $VMC-&gt;vacate_vm( "{query}" ) ;</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</string>
+			<string>0946DC1D-D792-48DD-9969-CBAF864C72C3</string>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
 				<key>escaping</key>
 				<integer>38</integer>
-				<key>keyword</key>
-				<string>vm</string>
-				<key>runningsubtext</key>
-				<string>Trying to figure out what you want to do. . .</string>
 				<key>script</key>
 				<string>require_once('vmcheckout.php');
+
 $VMC = new VMC();
 
-echo $VMC::vmStepOne( "{query}" );</string>
-				<key>subtext</key>
-				<string>Claim and Vacate Threespot Virtual Machines</string>
-				<key>title</key>
-				<string>Threespot Virtual Machine Checkout</string>
+echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
 				<key>type</key>
 				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>script</key>
-				<string>set temp to "{query}"
-if temp is "claim" then
-	tell application "Alfred 2" to search "claim "
-else if temp is "vacate" then 
-	tell application "Alfred 2" to search "vacate "
-else if temp is "resetName" then
-	tell application "Alfred 2" to search "reset "
-else if temp is "clear" then
-	tell application "Alfred 2" to search "clearvm"
-end if</string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.script</string>
-			<key>uid</key>
-			<string>2352FA69-2FE0-4804-A0F1-D5AB869030DC</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>vacate</string>
-				<key>script</key>
-				<string>include('vacate.php');
-
-Wrapper( {query} ); </string>
-				<key>subtext</key>
-				<string>Sub Text</string>
-				<key>title</key>
-				<string>Vacate Threespot Virtual Machine</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>1889701D-1EA3-4290-8B14-A310F3561286</string>
+			<string>9088C44D-E220-44C0-B316-C3EB507AAE4E</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -286,193 +380,203 @@ Wrapper( {query} ); </string>
 				<key>keyword</key>
 				<string>claim</string>
 				<key>runningsubtext</key>
-				<string>Retrieving available vms ...</string>
-				<key>script</key>
-				<string>/*
-require_once('vms.php');
-$vms = new VMS( "{query}" );
-
-echo $vms-&gt;searchVmData("http://vm-checkout.threespot.dev/vm.php"); // "http://apps.threespot.com/vmcheckout/vm.php"
-*/
-
-require_once('vmcheckout.php');
-$VMC = new VMC();
-echo $VMC::claimStepOne( "{query}" );</string>
-				<key>subtext</key>
-				<string>Search and Checkout Available Threespot VMs</string>
-				<key>title</key>
-				<string>Virtual Machine</string>
-				<key>type</key>
-				<integer>1</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>38</integer>
+				<string>Requesting Available VMs, please wait . . .</string>
 				<key>script</key>
 				<string>require_once('vmcheckout.php');
+
 $VMC = new VMC();
 
-echo $VMC::stepTwo( "{query}", true );
-</string>
+echo $VMC-&gt;request_vm_search( "claim", "{query}" ) ;</string>
+				<key>subtext</key>
+				<string>Search Available VMs to Claim</string>
+				<key>title</key>
+				<string>Claim Virtual Machine</string>
 				<key>type</key>
 				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A9ADDD8F-781D-4F6D-900E-B245E2852A22</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>resetname</string>
-				<key>script</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Reset Your Virtual Machine Checkout Name</string>
-				<key>title</key>
-				<string>Reset Name</string>
-				<key>type</key>
-				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>BC942E95-5DAD-41EC-B75E-0C4E7842DEE3</string>
+			<string>D828191E-DFA7-4172-8AFC-F027A725DFC8</string>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>38</integer>
+				<integer>102</integer>
 				<key>script</key>
-				<string>if ( file_exists( 'name.txt' ) ) {
-	unlink( 'name.txt' );
-	echo 'Name has been deleted';
-}
-else {
-	echo 'no name has been set yet';
-}</string>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;notify_user( "{query}" ) ;</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>846C5955-D0FF-45EB-B0CF-58F5389F96C6</string>
+			<string>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</string>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>clearvm</string>
-				<key>subtext</key>
-				<string>Do it Now!!!</string>
-				<key>text</key>
-				<string>Clear VM Checkout Name</string>
-				<key>withspace</key>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>EC0DE900-6361-4390-84EF-56F2C94DE41E</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>1091B60C-5221-418C-BCB6-B8F3498D6C19</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require_once('vmcheckout.php');
+
+$VMC = new VMC();
+
+echo $VMC-&gt;get_output_query( "{query}" );</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>AFF0DA6A-3E7E-4F6F-B2E2-A23604BA5D99</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Remote Desktop Connection.app</string>
+				</array>
+				<key>toggle</key>
 				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>E97A8F20-C006-4FA4-97EE-E2C00FA3FC7A</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>2507B0AF-30C2-43D8-9DEC-7D04181E1C69</string>
+			<string>DABD751B-23F0-464E-80C8-7568F35AAB50</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>TSM-alfred-vm-checkout
+======================
+
+Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
+
+## Functions
+
+### VM
+Shows the avaiable VM checkout workflow actions. 
+### Set Name / Reset Name
+Allow the user to either set or reset a VM checkout name that will be used to claims vms. This sets a simple txt document containing the user provided name.
+### Claim 
+Search the server for only available vms.  Selecting a result sends a request to the server which claims the machine and the user in notified that they now own that vm. 
+#### Claim (cmd)
+By holding down `cmd` Remote Desktop Connection will be open.  The name of the vm will be copied to the users clipboard and pasted into the RDC claim
+### Vacate 
+Search the server for claim vms that match the user name of the VM checkout name providing by running 'Set Name'.  Selecting a result sends a request to the server to vacate the vm and the user is notified that it has been vacated. 
+If you have more than one vm checked out, a 'Vacate All VMs' result will be shown that allows you to vacate all your claimed vm at once.</string>
 	<key>uidata</key>
 	<dict>
-		<key>1889701D-1EA3-4290-8B14-A310F3561286</key>
+		<key>0946DC1D-D792-48DD-9969-CBAF864C72C3</key>
 		<dict>
 			<key>ypos</key>
-			<real>370</real>
+			<real>270</real>
+		</dict>
+		<key>1091B60C-5221-418C-BCB6-B8F3498D6C19</key>
+		<dict>
+			<key>ypos</key>
+			<real>790</real>
+		</dict>
+		<key>14923BA6-787A-45BE-BAAB-4CFC5B22217D</key>
+		<dict>
+			<key>ypos</key>
+			<real>270</real>
+		</dict>
+		<key>18006E01-F660-485D-BE0B-6F3D08DB7202</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
 		</dict>
 		<key>2352FA69-2FE0-4804-A0F1-D5AB869030DC</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
-		<key>2507B0AF-30C2-43D8-9DEC-7D04181E1C69</key>
-		<dict>
-			<key>ypos</key>
-			<real>500</real>
-		</dict>
-		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
-		<dict>
-			<key>ypos</key>
-			<real>200</real>
-		</dict>
-		<key>846C5955-D0FF-45EB-B0CF-58F5389F96C6</key>
-		<dict>
-			<key>ypos</key>
-			<real>610</real>
-		</dict>
-		<key>8990735D-08D8-4160-8A0F-0E26EFA886B6</key>
-		<dict>
-			<key>ypos</key>
-			<real>250</real>
-		</dict>
-		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
-		<dict>
-			<key>ypos</key>
-			<real>70</real>
-		</dict>
-		<key>946AF645-25F4-49DC-B650-F52E9F1AFADA</key>
-		<dict>
-			<key>ypos</key>
-			<real>370</real>
-		</dict>
-		<key>A9ADDD8F-781D-4F6D-900E-B245E2852A22</key>
+		<key>65880ED7-7AA7-4322-A0DD-D721F7A569F2</key>
 		<dict>
 			<key>ypos</key>
 			<real>140</real>
 		</dict>
-		<key>BC942E95-5DAD-41EC-B75E-0C4E7842DEE3</key>
+		<key>8990735D-08D8-4160-8A0F-0E26EFA886B6</key>
 		<dict>
 			<key>ypos</key>
-			<real>490</real>
+			<real>270</real>
 		</dict>
-		<key>E97A8F20-C006-4FA4-97EE-E2C00FA3FC7A</key>
-		<dict>
-			<key>ypos</key>
-			<real>610</real>
-		</dict>
-		<key>ECE198BB-1AC9-47D3-868C-D939EB9BA90E</key>
+		<key>8C3DC677-5864-4022-AD2E-3EBD4D77FCB8</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>9088C44D-E220-44C0-B316-C3EB507AAE4E</key>
+		<dict>
+			<key>ypos</key>
+			<real>400</real>
+		</dict>
+		<key>AFF0DA6A-3E7E-4F6F-B2E2-A23604BA5D99</key>
+		<dict>
+			<key>ypos</key>
+			<real>790</real>
+		</dict>
+		<key>B38AF6DE-3883-4DCC-937C-1F527E8AD5F0</key>
+		<dict>
+			<key>ypos</key>
+			<real>530</real>
+		</dict>
+		<key>D828191E-DFA7-4172-8AFC-F027A725DFC8</key>
+		<dict>
+			<key>ypos</key>
+			<real>530</real>
+		</dict>
+		<key>DABD751B-23F0-464E-80C8-7568F35AAB50</key>
+		<dict>
+			<key>ypos</key>
+			<real>920</real>
+		</dict>
+		<key>EC0DE900-6361-4390-84EF-56F2C94DE41E</key>
+		<dict>
+			<key>ypos</key>
+			<real>660</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
