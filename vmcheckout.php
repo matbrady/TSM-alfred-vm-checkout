@@ -5,9 +5,6 @@ require_once('workflows.php');
 /** 
 * Virtual Machine Checkout 
 * 
-* Classed used for interatctive with the TS
-* Virtual Machine Checkout
-* 
 * @version 	 0.1.1
 * @author 	 Mathew Brady <mat.brady@threespot.com> 
 * @copyright 2013 
@@ -582,6 +579,6 @@ class VMC extends Workflows {
 
 }
 
-// $VMC = new VMC(); echo $VMC->request_vm_search( "{query}" ) ;
+// $VMC = new VMC(); echo $VMC->request_vm_search( "{query}" ); // used for development
 
 ?>
