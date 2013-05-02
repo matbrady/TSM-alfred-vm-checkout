@@ -17,7 +17,7 @@ class VMC extends Workflows {
 
 	protected $query;
 	protected $pattern;
-	protected $url = "http://vm-checkout.threespot.dev/vm.php";
+	protected $url = "http://apps.threespot.com/vmcheckout/vm.php"; // http://vm-checkout.threespot.dev/vm.php -OR- http://apps.threespot.com/vmcheckout/vm.php
 	protected $checkout_name;
 	protected $tasks = array(  // comma placement is for easier commenting of code during development
 		'claim' => array(
