@@ -4,11 +4,12 @@ require_once('workflows.php');
 
 /** 
 * Virtual Machine Checkout 
-* 
-* @version 	 0.1.1
-* @author 	 Mathew Brady <mat.brady@threespot.com> 
+*
+* DISCLAIMER!! BE code written by a FED 
+* @version   0.1.1
+* @author    Mathew Brady <mat.brady@threespot.com> 
 * @copyright 2013 
-* @license 	 http://www.php.net/license/3_01.txt PHP License 3.01 
+* @license   http://www.php.net/license/3_01.txt PHP License 3.01 
 */ 
 class VMC extends Workflows { 
 
