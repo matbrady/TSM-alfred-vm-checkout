@@ -17,9 +17,9 @@ A Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
 ### VM
 Shows the all VM checkout workflow actions. 
 ### Set Name / Reset Name
-Allow the user to either set or reset their VM checkout name that is used to claims vms. This creates a simple txt document containing the user provided name.
+Allow the user to either set or reset their VM checkout name that is used to claim vms. This creates a simple txt document containing the user provided name.
 ### Claim 
-Search the server for available vms.  Selecting a result sends a request to the server which claims the machine and the user in notified that they now own that vm. 
+Search the server for available vms.  Selecting a result sends a request to the server which claims the machine and the user is notified that they now own that vm. 
 #### Claim (cmd)
 Holding down `cmd` will open Remote Desktop Connection Application and the claimed VM name will be pasted into the prompt.
 ### Vacate 
