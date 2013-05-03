@@ -3,9 +3,7 @@
 
 A Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
 
-## Download
-
-[VirtualMachineCheckout.alfredworkflow](resources/exports/VirtualMachineCheckout.alfredworkflow)
+[__Download__](http://cl.ly/2T0l07363645)
 
 ## Quick Start
 1. [__Set__](#set-name--reset-name) - `set` to set your VM checkout name
