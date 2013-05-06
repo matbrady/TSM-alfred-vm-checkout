@@ -10,7 +10,9 @@ A Workflow that adds TSM-vm-checkout functionality to Alfred 2.
 2. [__Claim__](#claim) - `claim` to search all avaliable vm which can be claimed  ([__bonus__](#claim-cmd))
 3. [__Vacate__](#vacate) - `vacate` to search all personally claimed vms
 
-## Functions
+## Commands
+
+![VM Command Screenshot](resources/img/vm_screenshot.png "screenshot")
 
 ### VM
 Shows all VM checkout workflow actions. 
