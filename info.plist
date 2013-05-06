@@ -248,9 +248,9 @@ $VMC = new VMC();
 
 echo $VMC-&gt;request_name_change( "{query}" ) ;</string>
 				<key>subtext</key>
-				<string>Change Your Virtual Machine Checkout Name</string>
+				<string>Set A Virtual Machine Checkout Name</string>
 				<key>title</key>
-				<string>Reset Virtual Checkout Name</string>
+				<string>Set Checkout Name</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
@@ -442,19 +442,6 @@ echo $VMC-&gt;claim_vm( "{query}" ) ;</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<true/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>1091B60C-5221-418C-BCB6-B8F3498D6C19</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
@@ -470,6 +457,19 @@ echo $VMC-&gt;get_output_query( "{query}" );</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>AFF0DA6A-3E7E-4F6F-B2E2-A23604BA5D99</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>1091B60C-5221-418C-BCB6-B8F3498D6C19</string>
 		</dict>
 		<dict>
 			<key>config</key>

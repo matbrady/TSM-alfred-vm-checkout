@@ -28,15 +28,15 @@ class VMC extends Workflows {
 			"title" => "Vacate",
 			"subtitle" => "Vacate a Claimed Virtual Machine"
 		)
-		,'reset_name' => array(
-			"task" => "set",
-			"title" => "Reset Name",
-			"subtitle" => "Reset Your Checkout Name"
-		)
 		,'set_name' => array(
 			"task" => "set",
 			"title" => "Set Name",
 			"subtitle" => "Set Your Checkout Name"
+		)
+		,'reset_name' => array(
+			"task" => "reset",
+			"title" => "Reset Name",
+			"subtitle" => "Reset Your Checkout Name"
 		)
 	);
 
