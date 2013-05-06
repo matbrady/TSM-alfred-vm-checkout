@@ -1,11 +1,9 @@
 ![VM Checkout Icon](resources/img/icon.png "VM Checkout")
 # Alfred Virtual Machine Checkout
 
-A Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
+A Workflow that adds TSM-vm-checkout functionality to Alfred 2.
 
-## Download
-
-[VirtualMachineCheckout.alfredworkflow](resources/exports/VirtualMachineCheckout.alfredworkflow)
+[__Download__](http://cl.ly/2T0l07363645)
 
 ## Quick Start
 1. [__Set__](#set-name--reset-name) - `set` to set your VM checkout name
@@ -15,7 +13,7 @@ A Workflow that adds TSM-vm-checkout functionality to the Alfred 2 application.
 ## Functions
 
 ### VM
-Shows the all VM checkout workflow actions. 
+Shows all VM checkout workflow actions. 
 ### Set Name / Reset Name
 Allows the user to either set or reset their VM checkout name that is used to claim vms. This creates a simple txt document containing the user provided name.
 ### Claim 
