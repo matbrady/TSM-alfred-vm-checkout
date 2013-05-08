@@ -34,7 +34,7 @@ class VMC extends Workflows {
 			"subtitle" => "Set Your Checkout Name"
 		)
 		,'reset_name' => array(
-			"task" => "reset",
+			"task" => "set",
 			"title" => "Reset Name",
 			"subtitle" => "Reset Your Checkout Name"
 		)

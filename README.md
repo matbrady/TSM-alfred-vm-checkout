@@ -3,7 +3,7 @@
 
 A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
 
-[__Download__](http://cl.ly/2T0l07363645)
+[__Download__](http://cl.ly/0F2J24172e0c)
 
 ## Quick Start
 1. [__Set__](#set-name--reset-name) - `set` to set your VM checkout name
