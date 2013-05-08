@@ -1,7 +1,7 @@
 ![VM Checkout Icon](resources/img/icon.png "VM Checkout")
 # Alfred Virtual Machine Checkout
 
-A Workflow that adds TSM-vm-checkout functionality to Alfred 2.
+A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
 
 [__Download__](http://cl.ly/2T0l07363645)
 
