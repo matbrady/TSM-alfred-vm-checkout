@@ -22,8 +22,7 @@ class VmcTest extends PHPUnit_Framework_TestCase {
 		return $method;
 	}
 
-	// Not a good test becuase I don't push the name.txt file to the repo
-    function file_has_contents() {
+    function test_for_file_contents() {
 
     	$foo = self::getMethod('is_name_set');
     	$obj = new VMC();
@@ -32,8 +31,8 @@ class VmcTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('mat', $hasName);
     }
 
-    function testing() {
-    	$this->assertEquals(0,0);
+    function test_for_equal() {
+    	$this->assertEquals(1,0);
     }
 }
 
