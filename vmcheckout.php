@@ -43,17 +43,18 @@ class VMC extends Workflows {
 	public function __construct() {
 		parent::__construct();  
 	}
+	
 
 	/**
-	* GETTER - Confirm if Checkout Name is Set
-	*
-	* Descirption: Checks if the name.txt file exists, checks if 
-	* the file contains any content (name) and returns the name. 
-	* Otherwise it return false.
-	* @param NONE
-	* @return YES - 'string' : checkout name
-	* @return NO  - boolean  : false
-	*/
+	 * GETTER - Confirm if Checkout Name is Set
+	 *
+	 * Descirption: Checks if the name.txt file exists, checks if 
+	 * the file contains any content (name) and returns the name. 
+	 * Otherwise it return false.
+	 * @param NONE
+	 * @return YES - 'string' : checkout name
+	 * @return NO  - boolean  : false
+	 */
 	protected function is_name_set() {
 
 		// Check if the name file exisis
@@ -81,28 +82,30 @@ class VMC extends Workflows {
 			return false;
 		}
 	}
+	
 
 	/**
-	* SETTER - Sets the Pattern for Searching
-	*
-	* Description: Accepts a string it concatinates a regular
-	* expression pattern to be used for searching
-	* @param 'string' : user input or query
-	* @return NONE
-	*/
+	 * SETTER - Sets the Pattern for Searching
+	 *
+	 * Description: Accepts a string it concatinates a regular
+	 * expression pattern to be used for searching
+	 * @param 'string' : user input or query
+	 * @return NONE
+	 */
 	protected function set_match_pattern( $query ) {
 
 		$this->pattern = "/".$query."/i";
 	}
+	
 
 	/**
-	* Search VMC Workflow Tasks
-	*
-	* Description: Accepts the user input string and checks
-	* it against the tasks ($task) which can be invoked
-	* @param 'string' : user input or query
-	* @return XML : result data to be display in Alfred prompt
-	*/
+	 * Search VMC Workflow Tasks
+	 *
+	 * Description: Accepts the user input string and checks
+	 * it against the tasks ($task) which can be invoked
+	 * @param 'string' : user input or query
+	 * @return XML : result data to be display in Alfred prompt
+	 */
 	public function display_tasks( $query ) {
 
 		$this->set_match_pattern( $query );
@@ -138,20 +141,20 @@ class VMC extends Workflows {
 		}
 
 		return $this->toxml();
-
 	}
+	
 
 	/**
-	* Request VM Search
-	*
-	* Description: Check if a checkout name is set which is required 
-	* checkout a VM. If it IS NOT, request a name. Otherwise display
-	* all the available VMs
-	* @param 'string' : user input or query
-	* @return XML : Available VM data from server
-	* -OR-
-	* @return XML : Prompt for Checkout Name
-	*/
+	 * Request VM Search
+	 *
+	 * Description: Check if a checkout name is set which is required 
+	 * checkout a VM. If it IS NOT, request a name. Otherwise display
+	 * all the available VMs
+	 * @param 'string' : user input or query
+	 * @return XML : Available VM data from server
+	 * -OR-
+	 * @return XML : Prompt for Checkout Name
+	 */
 	public function request_vm_search( $action, $query ) {
 
 		$this->query = $query;
@@ -195,14 +198,14 @@ class VMC extends Workflows {
 
 
 	/**
-	* Request Checkout Name Change
-	*
-	* Description: Allow users to override their existing VM Checkout Name
-	* Additions: check for any vms that have been checked out using the old name
-	* reset them to the new name
-	* @param 'string' : user input or query
-	* @return 'string' : message to be 
-	*/
+	 * Request Checkout Name Change
+	 *
+	 * Description: Allow users to override their existing VM Checkout Name
+	 * Additions: check for any vms that have been checked out using the old name
+	 * reset them to the new name
+	 * @param 'string' : user input or query
+	 * @return 'string' : message to be 
+	 */
 	public function request_name_change( $query ) {
 
 		$this->query = $query;
@@ -240,12 +243,13 @@ class VMC extends Workflows {
 		return $this->prompt_user( $prompt );
 	}
 
+
 	/**
-	* Search Server for Available Virtual Machines
-	*
-	* @param 'string' : user input or query
-	* @return XML : Available VM results
-	*/
+	 * Search Server for Available Virtual Machines
+	 *
+	 * @param 'string' : user input or query
+	 * @return XML : Available VM results
+	 */
 	protected function search_available_vms() {
 
 		$url = $this->url;
@@ -274,12 +278,13 @@ class VMC extends Workflows {
 		return $this->toxml();
 	}
 
+
 	/**
-	* Search Server for Claimed Virtual Machines
-	*
-	* @param 'string' : user input or query
-	* @return XML : Claimed VM results
-	*/
+	 * Search Server for Claimed Virtual Machines
+	 *
+	 * @param 'string' : user input or query
+	 * @return XML : Claimed VM results
+	 */
 	protected function search_claimed_vms() {
 
 		$url = $this->url;
@@ -324,13 +329,14 @@ class VMC extends Workflows {
 		return $this->toxml();
 	}
 
+
 	/**
-	* Gets the enitre list of VMS from the server
-	* set the data request url
-	*
-	* @param 'string' : url to request data from
-	* @return array of all the VMS
-	*/
+	 * Gets the enitre list of VMS from the server
+	 * set the data request url
+	 *
+	 * @param 'string' : url to request data from
+	 * @return array of all the VMS
+	 */
 	protected function fetch_all_data( $url = "http://vm-checkout.threespot.dev/vm.php" ) {
 
 		$data = file_get_contents( $url );
@@ -340,13 +346,13 @@ class VMC extends Workflows {
 
 
 	/**
-	* Prompt User for Information
-	*
-	* Description: Generate a Result Prompt from passed data to request
-	* from the user. This will be used to set information with the Workflow
-	* @param ARRAY : [data, title, subtitle, image] info used to create Workflow Result
-	* @return XML : prompt result
-	*/
+	 * Prompt User for Information
+	 *
+	 * Description: Generate a Result Prompt from passed data to request
+	 * from the user. This will be used to set information with the Workflow
+	 * @param ARRAY : [data, title, subtitle, image] info used to create Workflow Result
+	 * @return XML : prompt result
+	 */
 	protected function prompt_user( $prompt ) {
 
 		$this->result( 'demo', json_encode($prompt['data']), $prompt['title'], $prompt['subtitle'], $prompt['image'], 'yes' );
@@ -356,11 +362,11 @@ class VMC extends Workflows {
 
 
 	/**
-	* Get Current VM Checkout Name
-	*
-	* @param NONE
-	* @return 'string' : user's VM checkout name
-	*/
+	 * Get Current VM Checkout Name
+	 *
+	 * @param NONE
+	 * @return 'string' : user's VM checkout name
+	 */
 	protected function get_checkout_name() {
 
 		return file_get_contents( 'name.txt' );
@@ -368,12 +374,12 @@ class VMC extends Workflows {
 
 
 	/**
-	* Notify the User
-	*
-	* Description: get and return the message from result data
-	* @param JSON 'string' : data from the alfred results
-	* @return 'string' : message to be shown to the user
-	*/
+	 * Notify the User
+	 *
+	 * Description: get and return the message from result data
+	 * @param JSON 'string' : data from the alfred results
+	 * @return 'string' : message to be shown to the user
+	 */
 	public function notify_user( $passed_data ) {
 
 		$data = json_decode($passed_data);
@@ -399,12 +405,12 @@ class VMC extends Workflows {
 
 
 	/**
-	* Get Output Query
-	*
-	* Description: get and return the message from result data
-	* @param JSON 'string' : data from the alfred results
-	* @return 'string' : message to be shown to the user
-	*/
+	 * Get Output Query
+	 *
+	 * Description: get and return the message from result data
+	 * @param JSON 'string' : data from the alfred results
+	 * @return 'string' : message to be shown to the user
+	 */
 	public function get_output_query( $passed_data ) {
 
 		$data = json_decode($passed_data);
@@ -423,14 +429,14 @@ class VMC extends Workflows {
 
 
 	/**
-	* Claim an Available Virtual Machine
-	*
-	* Description: Checks for the claim_vm action, 
-	* sends a PUT request to claim a VM from the server,
-	* notifies the user of successful claim.
-	* @param 'string'/OBJECT : data passed from vm results
-	* @return 'string' : response from CURL command
-	*/	
+	 * Claim an Available Virtual Machine
+	 *
+	 * Description: Checks for the claim_vm action, 
+	 * sends a PUT request to claim a VM from the server,
+	 * notifies the user of successful claim.
+	 * @param 'string'/OBJECT : data passed from vm results
+	 * @return 'string' : response from CURL command
+	 */	
 	public function claim_vm( $passed_data ) {
 
 		$data = json_decode($passed_data);
@@ -445,14 +451,14 @@ class VMC extends Workflows {
 
 
 	/**
-	* Vacate a Claimed Virtual Machine
-	*
-	* Description: Checks for the vacate_vm action,
-	* sends a DELETE request to vacate a VM from the server,
-	* notifies the user of a successful vacation ;)
-	* @param 'string'/OBJECT : data passed from vm results
-	* @return 'string' : repsonse from CURL command
-	*/
+	 * Vacate a Claimed Virtual Machine
+	 *
+	 * Description: Checks for the vacate_vm action,
+	 * sends a DELETE request to vacate a VM from the server,
+	 * notifies the user of a successful vacation ;)
+	 * @param 'string'/OBJECT : data passed from vm results
+	 * @return 'string' : repsonse from CURL command
+	 */
 	public function vacate_vm( $passed_data ) {
 
 		$data = json_decode($passed_data);
@@ -471,13 +477,13 @@ class VMC extends Workflows {
 
 
 	/**
-	* Create Request to Server
-	*
-	* Description: Creates a JSON string and sends a PUT 
-	* request to ther server for claiming or vacating a VM
-	* @param Object : data used to generate curl command
-	* @return 'string' : message to user
-	*/
+	 * Create Request to Server
+	 *
+	 * Description: Creates a JSON string and sends a PUT 
+	 * request to ther server for claiming or vacating a VM
+	 * @param Object : data used to generate curl command
+	 * @return 'string' : message to user
+	 */
 	protected function update_server( $type, $data ) {
 
 		date_default_timezone_set('America/New_York');
@@ -535,15 +541,15 @@ class VMC extends Workflows {
 
 
 	/**
-	* Send Request to the Server
-	*
-	* Description: Accepts a JSON string that is used to 
-	* populate a php CURL command
-	* @param 'sting'/JSON : update statement used in curl
-	* @return boolean : TRUE on successful curl
-	* -OR-
-	* @return boolean : FALSE on unsuccessful curl
-	*/
+	 * Send Request to the Server
+	 *
+	 * Description: Accepts a JSON string that is used to 
+	 * populate a php CURL command
+	 * @param 'sting'/JSON : update statement used in curl
+	 * @return boolean : TRUE on successful curl
+	 * -OR-
+	 * @return boolean : FALSE on unsuccessful curl
+	 */
 	protected function send_curl( $update_json ) {
 
 		$chlead = curl_init();
@@ -570,10 +576,10 @@ class VMC extends Workflows {
 	}
 
 	/**
-	* Update this Workflow to a newer Version
-	* NOTE: Not sure how to accomplish this yet
-	* Overwrite existing files
-	*/	
+	 * Update this Workflow to a newer Version
+	 * NOTE: Not sure how to accomplish this yet
+	 * Overwrite existing files
+	 */	
 	protected function update_workflow() {
 		#still trying to figure out the best way to do this
 	}
