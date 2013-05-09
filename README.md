@@ -27,6 +27,7 @@ Searches the server for the users claimed vms. Selecting a result sends a reques
 If you have more than one vm checked out, a 'Vacate All VMs' result will be shown that allows you to vacate all your claimed vms at once (*great for when you've got a couple vms claimed and you're signing off for the day*).
 
 ## Things To Do:
+- Do some tests and stuff.
 - See who has what - check to see who has a vm that you want.
 - 'Claim/Vacate' if no name is set request one (already available), launch intend alfred function claim or vacate.
 - &#x2713; Open Remote Desktop Connection when claiming a VM
@@ -35,3 +36,6 @@ If you have more than one vm checked out, a 'Vacate All VMs' result will be show
 
 ## Known Issues
 Regardless of what action the user cues in Alfred, if no vm checkout name has been set the user will be prompted to set one first. This interferes with the ability launch RDC when claiming a machine.  I was trying to avoid this; however, a solution is to notify the user with an error message. For example:  "Your VM checkout name is not set, please run 'Set Name'").  RDC will still open when a name has been set.  
+
+[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout)
+

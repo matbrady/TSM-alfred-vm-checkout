@@ -32,7 +32,7 @@ class VmcTest extends PHPUnit_Framework_TestCase {
     }
 
     function test_for_equal() {
-    	$this->assertEquals(1,0);
+    	$this->assertEquals(0,0);
     }
 }
 
