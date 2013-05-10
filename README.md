@@ -1,9 +1,10 @@
 # Alfred Virtual Machine Checkout
 A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
 
-![VM Checkout Icon](resources/img/icon_large.png "VM Checkout")![VM Command Screenshot](resources/img/vm_screenshot_small.png "screenshot")
+![VM Checkout Icon](resources/img/icon_large.png "VM Checkout")
 
 [__Download__](http://cl.ly/0F2J24172e0c)
+
 [![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=development)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout)
 
 ## Quick Start
@@ -11,8 +12,9 @@ A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-check
 2. [__Claim__](#claim) - `claim` to search all avaliable vm which can be claimed  ([__bonus__](#claim-cmd))
 3. [__Vacate__](#vacate) - `vacate` to search all personally claimed vms
 
-## Commands
+![VM Command Screenshot](resources/img/vm_screenshot_small.png "screenshot")
 
+## Commands
 ### VM
 `vm` Shows all VM checkout workflow actions. 
 ### Set Name / Reset Name
