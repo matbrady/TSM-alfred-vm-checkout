@@ -391,7 +391,7 @@ class VMC extends Workflows {
 					return "Please set a valid checkout name";
 				}
 				else {
-					file_put_contents( 'name.txt', $data->query );
+					$this->set_text_to_file( 'name.txt', $data->query );
 					return $data->message;
 				}
 
@@ -401,6 +401,19 @@ class VMC extends Workflows {
 				return '';
 			break;
 		}
+	}
+
+
+	/**
+	 * Set Text to File
+	 *
+	 * Description: Takes a string and assigns it to the file
+	 * name passed
+	 * @param 'string' ; file name
+	 * @param 'string' : value assigned to the file
+	 */
+	protected function set_text_to_file( $file, $text ) {
+		file_put_contents( $file, $text );
 	}
 
 
