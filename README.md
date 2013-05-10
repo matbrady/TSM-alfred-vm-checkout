@@ -1,6 +1,8 @@
 # Alfred Virtual Machine Checkout
 A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
+
 ![VM Checkout Icon](resources/img/icon_large.png "VM Checkout")![VM Command Screenshot](resources/img/vm_screenshot_small.png "screenshot")
+
 [__Download__](http://cl.ly/0F2J24172e0c)
 [![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=development)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout)
 
