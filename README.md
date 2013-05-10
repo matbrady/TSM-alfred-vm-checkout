@@ -1,5 +1,5 @@
 # Alfred Virtual Machine Checkout
-[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=master)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout) A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
+A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
 
 ![VM Checkout Icon](resources/img/icon_large.png "VM Checkout")
 
@@ -32,7 +32,10 @@ If you have more than one vm checked out, a 'Vacate All VMs' result will be show
 - &#x2713; Copy VM name to clipboard for easy pasting into the RDC
 - 'VM' & 'Vacate' - provide result to take user to the VM Checkout page for manual administrating 
 
-## Known Issues
-[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=development)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout)
+## Build Status
+[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=master)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout) master
 
+[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=development)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout) development
+
+#### Known Issues
 Regardless of what action the user cues in Alfred, if no vm checkout name has been set the user will be prompted to set one first. This interferes with the ability launch RDC when claiming a machine.  I was trying to avoid this; however, a solution is to notify the user with an error message. For example:  "Your VM checkout name is not set, please run 'Set Name'").  RDC will still open when a name has been set.  
