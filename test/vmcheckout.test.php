@@ -24,8 +24,8 @@ class VmcTest extends PHPUnit_Framework_TestCase {
 
     function test_for_file_contents() {
 
-    	$foo = self::getMethod('is_name_set');
-    	$obj = new VMC();
+    	// $foo = self::getMethod('is_name_set');
+    	// $obj = new VMC();
     	$hasName = ''; //$foo->invoke($obj);
 
         $this->assertEquals('', $hasName);
