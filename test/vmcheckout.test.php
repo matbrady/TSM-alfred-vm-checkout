@@ -28,7 +28,7 @@ class VmcTest extends PHPUnit_Framework_TestCase {
     	$obj = new VMC();
     	$hasName = $foo->invoke($obj);
 
-        $this->assertEquals('mat', $hasName);
+        $this->assertEquals('', $hasName);
     }
 
     function test_for_equal() {
