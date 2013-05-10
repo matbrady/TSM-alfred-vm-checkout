@@ -1,20 +1,17 @@
 # Alfred Virtual Machine Checkout
-A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
+[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=master)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout) A Workflow that adds [TSM-vm-checkout](https://github.com/Threespot/TSM-vm-checkout) functionality to Alfred 2.
 
 ![VM Checkout Icon](resources/img/icon_large.png "VM Checkout")
 
 [__Download__](http://cl.ly/0F2J24172e0c)
-
-[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=development)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout)
 
 ## Quick Start
 1. [__Set__](#set-name--reset-name) - `set` to set your VM checkout name
 2. [__Claim__](#claim) - `claim` to search all avaliable vm which can be claimed  ([__bonus__](#claim-cmd))
 3. [__Vacate__](#vacate) - `vacate` to search all personally claimed vms
 
-![VM Command Screenshot](resources/img/vm_screenshot_small.png "screenshot")
-
 ## Commands
+![VM Command Screenshot](resources/img/vm_screenshot_small.png "screenshot")
 ### VM
 `vm` Shows all VM checkout workflow actions. 
 ### Set Name / Reset Name
@@ -36,4 +33,6 @@ If you have more than one vm checked out, a 'Vacate All VMs' result will be show
 - 'VM' & 'Vacate' - provide result to take user to the VM Checkout page for manual administrating 
 
 ## Known Issues
+[![Build Status](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout.png?branch=development)](https://travis-ci.org/matbrady/TSM-alfred-vm-checkout)
+
 Regardless of what action the user cues in Alfred, if no vm checkout name has been set the user will be prompted to set one first. This interferes with the ability launch RDC when claiming a machine.  I was trying to avoid this; however, a solution is to notify the user with an error message. For example:  "Your VM checkout name is not set, please run 'Set Name'").  RDC will still open when a name has been set.  
