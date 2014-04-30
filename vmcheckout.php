@@ -1,17 +1,17 @@
-<?php 
+<?php
 
 require_once('workflows.php');
 
-/** 
-* Virtual Machine Checkout 
+/**
+* Virtual Machine Checkout
 *
-* DISCLAIMER!! BE code written by a FED 
+* DISCLAIMER!! BE code written by a FED
 * @version   0.1.1
-* @author    Mathew Brady <mat.brady@threespot.com> 
-* @copyright 2013 
-* @license   http://www.php.net/license/3_01.txt PHP License 3.01 
-*/ 
-class VMC extends Workflows { 
+* @author    Mathew Brady <mat.brady@threespot.com>
+* @copyright 2013
+* @license   http://www.php.net/license/3_01.txt PHP License 3.01
+*/
+class VMC extends Workflows {
 
 	protected $query;
 	protected $pattern;
@@ -41,14 +41,14 @@ class VMC extends Workflows {
 	);
 
 	public function __construct() {
-		parent::__construct();  
+		parent::__construct();
 	}
 
 	/**
 	* GETTER - Confirm if Checkout Name is Set
 	*
-	* Descirption: Checks if the name.txt file exists, checks if 
-	* the file contains any content (name) and returns the name. 
+	* Descirption: Checks if the name.txt file exists, checks if
+	* the file contains any content (name) and returns the name.
 	* Otherwise it return false.
 	* @param NONE
 	* @return YES - 'string' : checkout name
@@ -62,7 +62,7 @@ class VMC extends Workflows {
 			$text = file_get_contents( 'name.txt' );
 
 			// Check if anything is written to the file
-			if ( strlen( $text ) > 0 ) { 
+			if ( strlen( $text ) > 0 ) {
 
 				$this->checkout_name = $text;
 				// return the checkout name
@@ -115,16 +115,16 @@ class VMC extends Workflows {
 			* IF checkout name IS NOT set and the Task name is "Reset Name"
 			*   dont create a result.
 			* In other words: Only display "Set Name" if no name is set. Only
-			* display "Reset Name" if a name is already set 
+			* display "Reset Name" if a name is already set
 			*/
 			if ( $this->is_name_set() !== false && $func['title'] === "Set Name"  ||
-				 $this->is_name_set() === false && $func['title'] === "Reset Name" ) 
+				 $this->is_name_set() === false && $func['title'] === "Reset Name" )
 			{
 				continue; // don't make a result
 			}
 
 			// IF user matches a VM task name OR is an empty string
-			else { 
+			else {
 
 				if ( preg_match( $this->pattern, $func['title'], $matches) || $query === "" ) {
 
@@ -144,7 +144,7 @@ class VMC extends Workflows {
 	/**
 	* Request VM Search
 	*
-	* Description: Check if a checkout name is set which is required 
+	* Description: Check if a checkout name is set which is required
 	* checkout a VM. If it IS NOT, request a name. Otherwise display
 	* all the available VMs
 	* @param 'string' : user input or query
@@ -167,11 +167,11 @@ class VMC extends Workflows {
 					return $this->search_available_vms();
 				break;
 
-				case "vacate":	
+				case "vacate":
 					return $this->search_claimed_vms();
 				break;
 
-			} 
+			}
 		}
 
 		// Name has NOT been set
@@ -201,7 +201,7 @@ class VMC extends Workflows {
 	* Additions: check for any vms that have been checked out using the old name
 	* reset them to the new name
 	* @param 'string' : user input or query
-	* @return 'string' : message to be 
+	* @return 'string' : message to be
 	*/
 	public function request_name_change( $query ) {
 
@@ -307,6 +307,7 @@ class VMC extends Workflows {
 
 		// If Claimed VMS is more than one add a 'Vacate All VM' result
 		if ( count($claimed_vms) > 1 ) {
+      $vacate_all_data = new stdClass();
 			$vacate_all_data->task = 'clear';
 			$vacate_all_data->action = 'vacate_all';
 			$vacate_all_data->name = $name;
@@ -391,7 +392,7 @@ class VMC extends Workflows {
 
 			break;
 
-			default: 
+			default:
 				return '';
 			break;
 		}
@@ -415,7 +416,7 @@ class VMC extends Workflows {
 				return $data->vm;
 			break;
 
-			default: 
+			default:
 				return '';
 			break;
 		}
@@ -425,12 +426,12 @@ class VMC extends Workflows {
 	/**
 	* Claim an Available Virtual Machine
 	*
-	* Description: Checks for the claim_vm action, 
+	* Description: Checks for the claim_vm action,
 	* sends a PUT request to claim a VM from the server,
 	* notifies the user of successful claim.
 	* @param 'string'/OBJECT : data passed from vm results
 	* @return 'string' : response from CURL command
-	*/	
+	*/
 	public function claim_vm( $passed_data ) {
 
 		$data = json_decode($passed_data);
@@ -462,7 +463,7 @@ class VMC extends Workflows {
 			return $this->update_server( 'DELETE', $data );
 		}
 		else if ( $data->action === 'vacate_all' ) {
-			 
+
 			return $this->update_server( 'CLEAR', $data );
 		}
 
@@ -473,7 +474,7 @@ class VMC extends Workflows {
 	/**
 	* Create Request to Server
 	*
-	* Description: Creates a JSON string and sends a PUT 
+	* Description: Creates a JSON string and sends a PUT
 	* request to ther server for claiming or vacating a VM
 	* @param Object : data used to generate curl command
 	* @return 'string' : message to user
@@ -523,7 +524,7 @@ class VMC extends Workflows {
 				// Otherwise notify the user something is broken
 				return 'Something went horribly wrong.';
 			break;
-		} 
+		}
 
 		if ( $good_request === false ) {
 		  	return $curl_error;
@@ -537,7 +538,7 @@ class VMC extends Workflows {
 	/**
 	* Send Request to the Server
 	*
-	* Description: Accepts a JSON string that is used to 
+	* Description: Accepts a JSON string that is used to
 	* populate a php CURL command
 	* @param 'sting'/JSON : update statement used in curl
 	* @return boolean : TRUE on successful curl
@@ -573,7 +574,7 @@ class VMC extends Workflows {
 	* Update this Workflow to a newer Version
 	* NOTE: Not sure how to accomplish this yet
 	* Overwrite existing files
-	*/	
+	*/
 	protected function update_workflow() {
 		#still trying to figure out the best way to do this
 	}
